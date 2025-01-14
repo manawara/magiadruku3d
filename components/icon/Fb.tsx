@@ -2,7 +2,12 @@ import React from "react";
 
 const Fb = ({ size = 16, color = "#ffffff" }) => {
   return (
-    <svg viewBox="0,0,256,256" width={size} height={size}>
+    <svg
+      viewBox="0,0,256,256"
+      width={size}
+      height={size}
+      className="hover:scale-110 transition-transform duration-100 ease-out"
+    >
       <g
         fill={color}
         stroke="none"
