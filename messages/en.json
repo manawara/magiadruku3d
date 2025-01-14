@@ -1,6 +1,15 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "Header": {
+      "announcement-text": "Welcome to MagiaDruku3d online eCommerce store.",
+      "follow-us": "Follow us",
+      "search-placeholder": "Search for anything...",
+      "Nav-mobile": {
+        "home": "Home",
+        "shopping": "Cart",
+        "favorite": "Favorites",
+        "profile": "Profile"
+      }
+    }
   }
 }

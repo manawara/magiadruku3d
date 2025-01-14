@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
+import Header from "@/feature/header/components/header/Header";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -13,29 +14,31 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 });
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  // Ensure that the incoming `locale` is valid
+async function validateLocale(locale: string) {
   if (!routing.locales.includes(locale as SupportedLocale)) {
     notFound();
   }
+  return locale;
+}
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
+export default async function LocaleLayout(props: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  // Await the params object first
+  const params = await props.params;
+
+  const [validatedLocale, messages] = await Promise.all([
+    validateLocale(params.locale),
+    getMessages(),
+  ]);
 
   return (
-    <html lang={locale}>
-      <body>
+    <html lang={validatedLocale}>
+      <body className={`${publicSans.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <main className={`${publicSans.className} antialiased`}>
-            {children}
-          </main>
+          <Header />
+          <main className="flex flex-col">{props.children}</main>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,1 +1,15 @@
-{}
+{
+  "HomePage": {
+    "Header": {
+      "announcement-text": "Witamy w sklepie internetowym MagiaDruku3d.",
+      "follow-us": "Śledź nas na",
+      "search-placeholder": "Wyszukaj produkt...",
+      "Nav-mobile": {
+        "home": "Strona Główna",
+        "shopping": "Koszyk",
+        "favorite": "Ulubione",
+        "profile": "Profil"
+      }
+    }
+  }
+}
