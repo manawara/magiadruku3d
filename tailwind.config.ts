@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+type AddUtilitiesFunction = (
+  utilities: Record<string, Record<string, string>>
+) => void;
 
 export default {
   content: [
@@ -87,8 +90,32 @@ export default {
       },
       fontFamily: {
         publicSans: ["var(--font-public-sans)"],
+        arial: "Arial, sans-serif",
+      },
+      textShadow: {
+        default: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+        lg: "4px 4px 8px rgba(0, 0, 0, 0.5)",
+        xl: "6px 6px 12px rgba(0, 0, 0, 0.5)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: { addUtilities: AddUtilitiesFunction }) {
+      const newUtilities = {
+        ".text-shadow": {
+          textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
+        },
+        ".text-shadow-lg": {
+          textShadow: "4px 4px 8px rgba(0, 0, 0, 0.5)",
+        },
+        ".text-shadow-xl": {
+          textShadow: "6px 6px 12px rgba(0, 0, 0, 0.5)",
+        },
+        ".text-shadow-none": {
+          textShadow: "none",
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 } satisfies Config;
