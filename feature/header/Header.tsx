@@ -1,7 +1,7 @@
 import Divider from "@/components/divider/Divider";
 import AnnouncementBar from "@/feature/header/components/announcement-bar/AnnouncementBar";
-import PromoBanner from "@/feature/promo-banner/components/promo-banner/PromoBanner";
-import MainHeader from "../main-header/MainHeader";
+import PromoBanner from "@/feature/promo-banner/PromoBanner";
+import MainHeader from "./components/main-header/MainHeader";
 const Header = async () => {
   return (
     <header className="fixed  left-0 right-0 flex flex-col bg-colors-blue-700 justify-between">

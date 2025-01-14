@@ -5,7 +5,7 @@ import { routing } from "@/i18n/routing";
 import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
-import Header from "@/feature/header/components/header/Header";
+import Header from "@/feature/header/Header";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
