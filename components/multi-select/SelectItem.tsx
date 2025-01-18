@@ -56,7 +56,12 @@ const SelectItem = ({
             hoveredCategory === category.mainCategory) && (
             <SelectSubMenu>
               {category.children.map((child, index) => (
-                <div key={index}>{child.name}</div>
+                <div
+                  key={index}
+                  className="px-6 py-3 text-xs hover:bg-colors-gray-50 lg:text-sm"
+                >
+                  {child.name}
+                </div>
               ))}
             </SelectSubMenu>
           )}
