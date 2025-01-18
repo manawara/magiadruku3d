@@ -9,7 +9,7 @@ interface HamburgerButtonProps {
 const HamburgerButton = ({ open, onClick }: HamburgerButtonProps) => {
   return (
     <motion.button
-      className="w-11 h-[34px] relative flex items-center justify-center md:hidden z-20"
+      className="w-11 h-[34px] relative flex items-center justify-center md:hidden"
       onClick={onClick}
       animate={open ? "open" : "close"}
     >

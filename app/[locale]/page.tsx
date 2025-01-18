@@ -1,7 +1,11 @@
+import ServiceNav from "@/feature/service-navigation /ServiceNav";
+
 export default function HomePage() {
   return (
     <>
-      <div className="mt-[300px]"></div>
+      <div>
+        <ServiceNav />
+      </div>
     </>
   );
 }

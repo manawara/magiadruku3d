@@ -10,6 +10,12 @@
         "favorite": "Ulubione",
         "profile": "Profil"
       }
+    },
+    "ServiceNav": {
+      "track-order": "Śledzenie zamówienia",
+      "customer-support": "Wsparcie klienta",
+      "need-help": "Potrzebuję pomocy",
+      "select-label": "Wszystkie kategorie"
     }
   }
 }

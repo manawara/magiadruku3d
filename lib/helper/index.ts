@@ -7,3 +7,23 @@ export const findIndexCountry = (country: string) => {
   );
   return id;
 };
+
+export const slugify = (text: string) => {
+  const polishChars: { [key: string]: string } = {
+    ą: "a",
+    ć: "c",
+    ę: "e",
+    ł: "l",
+    ń: "n",
+    ó: "o",
+    ś: "s",
+    ź: "z",
+    ż: "z",
+  };
+  let formattedText = text.toLowerCase();
+  for (const char in polishChars) {
+    formattedText = formattedText.replaceAll(char, polishChars[char]);
+  }
+  formattedText = formattedText.replaceAll(" ", "-");
+  return formattedText;
+};

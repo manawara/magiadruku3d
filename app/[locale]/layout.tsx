@@ -6,7 +6,6 @@ import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
 import Header from "@/feature/header/Header";
-
 const publicSans = Public_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
