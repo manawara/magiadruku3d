@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import SelectSubMenu from "./SelectSubMenu";
 import { cva, VariantProps } from "class-variance-authority";
+import { MainCategory } from "@/types";
 
 const selectItem = cva("px-6 py-3 cursor-pointer", {
   variants: {
@@ -16,10 +17,7 @@ const selectItem = cva("px-6 py-3 cursor-pointer", {
 });
 
 interface SelectItemProps extends VariantProps<typeof selectItem> {
-  category: {
-    mainCategory: string;
-    children: { name: string }[];
-  };
+  category: MainCategory;
   hoveredCategory: string | null;
   openCategory: string | null;
   onCategoryClick: (category: string) => void;
@@ -34,6 +32,8 @@ const SelectItem = ({
   onCategoryHover,
   intent,
 }: SelectItemProps) => {
+  console.log("sss");
+  console.log(category);
   return (
     <motion.li
       className={`px-2 py-1 cursor-pointer relative flex justify-between items-center text-xs lg:text-sm ${selectItem(
@@ -45,16 +45,16 @@ const SelectItem = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      onMouseEnter={() => onCategoryHover(category.mainCategory)}
-      onClick={() => onCategoryClick(category.mainCategory)}
+      onMouseEnter={() => onCategoryHover(category.mainCategory as string)}
+      onClick={() => onCategoryClick(category.mainCategory as string)}
     >
-      {category.mainCategory}
+      {category.mainCategory as string}
       {category.children.length > 0 && (
         <>
           <ChevronRight size={18} />
           {(openCategory === category.mainCategory ||
             hoveredCategory === category.mainCategory) && (
-            <SelectSubMenu>
+            <SelectSubMenu onHover={onCategoryHover}>
               {category.children.map((child, index) => (
                 <div
                   key={index}

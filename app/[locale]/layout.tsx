@@ -6,6 +6,8 @@ import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
 import Header from "@/feature/header/Header";
+import QueryProvider from "@/provider/QueryProvider";
+
 const publicSans = Public_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -36,8 +38,10 @@ export default async function LocaleLayout(props: {
     <html lang={validatedLocale}>
       <body className={`${publicSans.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main className="flex flex-col">{props.children}</main>
+          <QueryProvider>
+            <Header />
+            <main className="flex flex-col">{props.children}</main>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -3,8 +3,11 @@ import SocialNav from "../../../../components/social-nav/SocialNav";
 import { getTranslations } from "next-intl/server";
 import SelectCountry from "@/components/select-country/SelectCountry";
 import { country } from "@/lib/data/country";
+import { getLocale } from "next-intl/server"; // Użyj getLocale z next-intl/server
+
 const AnnouncementBar = async () => {
   const t = await getTranslations("HomePage.Header");
+  const locale = await getLocale();
 
   return (
     <div

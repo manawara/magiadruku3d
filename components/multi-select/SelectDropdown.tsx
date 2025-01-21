@@ -1,14 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import SelectItem from "./SelectItem";
-
-interface Category {
-  mainCategory: string;
-  children: { name: string }[];
-}
+import { Categories } from "@/types";
 
 interface SelectDropdownProps {
   open: boolean;
-  categories: Category[];
+  categories: Categories;
   hoveredCategory: string | null;
   openCategory: string | null;
   onCategoryClick: (category: string) => void;
@@ -36,7 +32,7 @@ const SelectDropdown = ({
         >
           {categories.map((category) => (
             <SelectItem
-              key={category.mainCategory}
+              key={category.id}
               category={category}
               hoveredCategory={hoveredCategory}
               openCategory={openCategory}

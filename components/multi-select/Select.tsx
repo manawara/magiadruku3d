@@ -5,36 +5,19 @@ import useToogle from "@/hooks/useToogle";
 import useCloseOutside from "@/hooks/useCloseOutside";
 import SelectLabel from "./SelectLabel";
 import SelectDropdown from "./SelectDropdown";
-
-const categories = [
-  {
-    mainCategory: "Dla dzieci",
-    children: [
-      {
-        name: "Kredki dla dzieci",
-      },
-      {
-        name: "Breloki",
-      },
-    ],
-  },
-  {
-    mainCategory: "Dla dzieci 2",
-    children: [],
-  },
-];
+import { Categories } from "@/types";
 
 interface SelectProps {
   label: string;
   intent?: "primary";
+  categories: Categories;
 }
 
-const Select = ({ label, intent = "primary" }: SelectProps) => {
+const Select = ({ label, intent = "primary", categories }: SelectProps) => {
   const [open, setOpen] = useToogle();
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const selectRef = useRef(null);
-
   useCloseOutside(selectRef, () => {
     setOpen(false);
     setOpenCategory(null);
@@ -49,7 +32,7 @@ const Select = ({ label, intent = "primary" }: SelectProps) => {
       <SelectLabel
         open={open}
         label={label}
-        onClick={() => setOpen()}
+        onAction={setOpen}
         intent={intent}
       />
       <SelectDropdown

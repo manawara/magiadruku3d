@@ -18,16 +18,17 @@ const selectLabel = cva(
 interface SelectLabelProps extends VariantProps<typeof selectLabel> {
   open: boolean;
   label: string;
-  onClick: () => void;
+  onAction: () => void;
 }
 
-const SelectLabel = ({ open, label, onClick, intent }: SelectLabelProps) => {
+const SelectLabel = ({ open, label, onAction, intent }: SelectLabelProps) => {
+  console.log(open);
   return (
     <div
       className={`${
         open ? "" : "!bg-transparent"
       } flex items-center gap-2 cursor-pointer ${selectLabel({ intent })}`}
-      onClick={onClick}
+      onClick={onAction}
     >
       <span className="text-xs lg:text-sm">{label}</span>
       <ChevronDown
