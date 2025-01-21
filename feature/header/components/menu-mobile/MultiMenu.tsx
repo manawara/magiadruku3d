@@ -58,7 +58,7 @@ const MultiMenu = ({ label, categories }: MultiMenu) => {
                     <motion.ul className="ml-4 mt-2 space-y-1">
                       {category.children.map((child) => (
                         <motion.li
-                          key={child.id}
+                          key={child.id + child.name}
                           variants={childVariants}
                           className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer py-1"
                         >

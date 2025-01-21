@@ -22,7 +22,6 @@ interface SelectLabelProps extends VariantProps<typeof selectLabel> {
 }
 
 const SelectLabel = ({ open, label, onAction, intent }: SelectLabelProps) => {
-  console.log(open);
   return (
     <div
       className={`${
