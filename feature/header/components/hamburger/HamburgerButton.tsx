@@ -12,6 +12,7 @@ const HamburgerButton = ({ open, onClick }: HamburgerButtonProps) => {
       className="w-11 h-[34px] relative flex items-center justify-center md:hidden"
       onClick={onClick}
       animate={open ? "open" : "close"}
+      aria-label="Menu mobile"
     >
       <div className="relative w-8 h-6">
         <motion.div
