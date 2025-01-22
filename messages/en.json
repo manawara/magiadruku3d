@@ -9,6 +9,10 @@
         "shopping": "Cart",
         "favorite": "Favorites",
         "profile": "Profile"
+      },
+      "MenuMobile": {
+        "shop": "Shop",
+        "contact": "Contact"
       }
     },
     "ServiceNav": {

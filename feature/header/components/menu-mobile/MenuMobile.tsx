@@ -8,7 +8,7 @@ import Divider from "@/components/divider/Divider";
 import MultiMenu from "./MultiMenu";
 import MenuItem from "./MenuItem";
 import { getCategory } from "@/lib/action/category";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 interface MenuProps {
   onClose: () => void;
@@ -16,7 +16,7 @@ interface MenuProps {
 
 const Menu = ({ onClose }: MenuProps) => {
   const locale = useLocale();
-
+  const t = useTranslations("HomePage.Header.MenuMobile");
   const { data } = useQuery({
     queryKey: ["categories"],
     queryFn: () => getCategory(locale),
@@ -37,17 +37,12 @@ const Menu = ({ onClose }: MenuProps) => {
       <motion.nav className="py-4 h-full">
         <motion.ul className="font-semibold">
           <MenuItem variants={childVariants} className="py-4">
-            <MultiMenu label="Shop" categories={data} />
+            <MultiMenu label={t("shop")} categories={data} />
           </MenuItem>
           <Divider position="horizontal" color="bg-gray-900" />
 
           <MenuItem variants={childVariants} className="py-4">
-            <Link href="#">About</Link>
-          </MenuItem>
-          <Divider position="horizontal" color="bg-gray-900" />
-
-          <MenuItem variants={childVariants} className="py-4">
-            <Link href="#">Contact</Link>
+            <Link href="#">{t("contact")}</Link>
           </MenuItem>
           <Divider position="horizontal" color="bg-gray-900" />
         </motion.ul>
