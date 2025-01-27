@@ -6,7 +6,7 @@ import { country } from "@/lib/data/country";
 import { getLocale } from "next-intl/server"; // Użyj getLocale z next-intl/server
 
 const AnnouncementBar = async () => {
-  const t = await getTranslations("HomePage.Header");
+  const t = await getTranslations("Header");
   const locale = await getLocale();
 
   return (

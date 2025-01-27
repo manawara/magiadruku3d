@@ -16,7 +16,7 @@ interface MenuProps {
 
 const Menu = ({ onClose }: MenuProps) => {
   const locale = useLocale();
-  const t = useTranslations("HomePage.Header.MenuMobile");
+  const t = useTranslations("Header.MenuMobile");
   const { data } = useQuery({
     queryKey: ["categories"],
     queryFn: () => getCategory(locale),
@@ -28,7 +28,7 @@ const Menu = ({ onClose }: MenuProps) => {
       animate="open"
       exit="closed"
       variants={menuVariants}
-      className="fixed top-0 right-0 bottom-0 w-80 bg-colors-gray-100 shadow-lg z-50 md:hidden"
+      className="fixed top-0 right-0 bottom-0 w-80 bg-gray-100 shadow-lg z-50 md:hidden"
     >
       <button className="flex justify-self-end m-2" onClick={onClose}>
         <X size={28} />

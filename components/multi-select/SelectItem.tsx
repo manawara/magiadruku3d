@@ -56,7 +56,7 @@ const SelectItem = ({
               {category.children.map((child, index) => (
                 <div
                   key={index}
-                  className="px-6 py-3 text-xs hover:bg-colors-gray-50 lg:text-sm"
+                  className="px-6 py-3 text-xs hover:bg-gray-50 lg:text-sm"
                 >
                   {child.name}
                 </div>

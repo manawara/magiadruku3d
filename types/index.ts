@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-
+import { StaticImageData } from "next/image";
 export type SupportedLocale = "pl" | "en";
 
 export type ChildrenType = {
@@ -22,3 +22,17 @@ export interface MainCategory {
 
 // Type for the entire categories array
 export type Categories = MainCategory[];
+
+export type IntentType = "primary" | "info" | "success" | "warning" | "danger";
+
+export type SliderItemType = {
+  id?: number;
+  subtitle?: string;
+  title: string;
+  description?: string;
+  image: {
+    src: string | StaticImageData;
+    alt: string;
+  };
+  price: number;
+};

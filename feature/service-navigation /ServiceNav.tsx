@@ -9,7 +9,7 @@ const ServiceNav = async () => {
   const locale = await getLocale();
   const category = await getCategory(locale);
 
-  const t = await getTranslations("HomePage.ServiceNav");
+  const t = await getTranslations("ServiceNav");
   return (
     <section>
       <div className="container mx-auto px-4 flex  gap-2 lg:gap-8 items-center max-md:hidden justify-between lg:justify-start">

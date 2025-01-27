@@ -54,7 +54,7 @@ const IconWithText = ({
         }}
       >
         <IconComponent
-          className={`${color} ${sizeIcon} group-hover:text-colors-orange-500 transition-colors duration-100 ease-linear`}
+          className={`${color} ${sizeIcon} group-hover:text-orange-500 transition-colors duration-100 ease-linear`}
           strokeWidth={1.5}
         />
       </motion.div>
@@ -65,7 +65,7 @@ const IconWithText = ({
           (link ? (
             <Link
               href={`${slugify(link)}`}
-              className="group-hover:text-colors-orange-500  transition-colors duration-100 ease-linear"
+              className="group-hover:text-orange-500  transition-colors duration-100 ease-linear"
             >
               {label}
             </Link>

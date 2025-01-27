@@ -8,12 +8,12 @@ import React from "react";
 import { getTranslations } from "next-intl/server";
 
 const UserNavMobile = async () => {
-  const t = await getTranslations("HomePage.Header.Nav-mobile");
+  const t = await getTranslations("Header.Nav-mobile");
   return (
     <>
       <nav
         aria-label="User navigation"
-        className="fixed bottom-0 py-2 bg-colors-blue-700 w-full md:hidden"
+        className="fixed bottom-0 py-2 bg-blue-700 w-full md:hidden"
       >
         <ul className="flex max-sm:justify-around justify-center min-[430px]:gap-8 px-2">
           <li>

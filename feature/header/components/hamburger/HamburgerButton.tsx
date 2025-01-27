@@ -17,15 +17,15 @@ const HamburgerButton = ({ open, onClick }: HamburgerButtonProps) => {
       <div className="relative w-8 h-6">
         <motion.div
           variants={topVariant}
-          className="h-[3px] w-8 bg-colors-gray-50 rounded-sm absolute top-0 left-0 right-0"
+          className="h-[3px] w-8 bg-gray-50 rounded-sm absolute top-0 left-0 right-0"
         />
         <motion.div
           variants={middleVariant}
-          className="h-[3px] w-8 bg-colors-gray-50 rounded-sm absolute top-[10px] left-0 right-0"
+          className="h-[3px] w-8 bg-gray-50 rounded-sm absolute top-[10px] left-0 right-0"
         />
         <motion.div
           variants={bottomVariant}
-          className="h-[3px] w-8 bg-colors-gray-50 rounded-sm absolute top-[20px] left-0 right-0"
+          className="h-[3px] w-8 bg-gray-50 rounded-sm absolute top-[20px] left-0 right-0"
         />
       </div>
     </motion.button>

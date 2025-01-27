@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const SocialNav = ({ color = "white" }: { color?: string }) => {
-  const t = useTranslations("HomePage.Header");
+  const t = useTranslations("Header");
 
   return (
     <nav aria-label="Social media navigation" className="inline-flex gap-3">

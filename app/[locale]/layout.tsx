@@ -40,7 +40,9 @@ export default async function LocaleLayout(props: {
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <Header />
-            <main className="flex flex-col">{props.children}</main>
+            <main className="flex flex-col z-0 overflow-hidden px-4 max-md:mb-[66px]">
+              {props.children}
+            </main>
           </QueryProvider>
         </NextIntlClientProvider>
       </body>

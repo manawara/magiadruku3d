@@ -2,8 +2,8 @@ import React from "react";
 import { button } from "./variants";
 import { ChildrenType } from "@/types";
 import { ArrowRight } from "lucide-react"; // Changed from 'lucide' to 'lucide-react'
+import { IntentType } from "@/types";
 
-type IntentType = "primary" | "info" | "success" | "warning" | "danger";
 type BaseButtonProps = {
   soft?: boolean;
   size?: "small" | "medium" | "large";

@@ -6,7 +6,7 @@ const selectLabel = cva(
   {
     variants: {
       intent: {
-        primary: "text-gray-900 bg-colors-gray-50",
+        primary: "text-gray-900 bg-gray-50",
       },
     },
     defaultVariants: {

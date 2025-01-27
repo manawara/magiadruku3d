@@ -1,25 +1,29 @@
 {
-  "HomePage": {
-    "Header": {
-      "announcement-text": "Welcome to MagiaDruku3d online eCommerce store.",
-      "follow-us": "Follow us",
-      "search-placeholder": "Search for anything...",
-      "Nav-mobile": {
-        "home": "Home",
-        "shopping": "Cart",
-        "favorite": "Favorites",
-        "profile": "Profile"
-      },
-      "MenuMobile": {
-        "shop": "Shop",
-        "contact": "Contact"
-      }
+  "Header": {
+    "announcement-text": "Welcome to MagiaDruku3d online eCommerce store.",
+    "follow-us": "Follow us",
+    "search-placeholder": "Search for anything...",
+    "Nav-mobile": {
+      "home": "Home",
+      "shopping": "Cart",
+      "favorite": "Favorites",
+      "profile": "Profile"
     },
-    "ServiceNav": {
-      "track-order": "Track order",
-      "customer-support": "Customer Support",
-      "need-help": "Need Help",
-      "select-label": "All category"
+    "MenuMobile": {
+      "shop": "Shop",
+      "contact": "Contact"
+    }
+  },
+  "ServiceNav": {
+    "track-order": "Track order",
+    "customer-support": "Customer Support",
+    "need-help": "Need Help",
+    "select-label": "All category"
+  },
+  "Banner": {
+    "Slider": {
+      "shop-now": "Shop Now",
+      "price": "$"
     }
   }
 }

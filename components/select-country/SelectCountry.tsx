@@ -83,22 +83,20 @@ const SelectCountry = ({ items }: SelectCountryProps) => {
         aria-selected={isSelected}
         className={`
           flex gap-3 font-semibold items-center p-2
-          ${!isSelected && "cursor-pointer hover:bg-gray-200"}
+          ${!isSelected && "cursor-pointer hover:bg-gray-100"}
         `}
         onClick={() => !isSelected && handleSelectCountry(item.tag)}
       >
         <Image src={item.icon} className="size-4" alt={item.name} />
         <div className="text-gray-500">{item.name}</div>
-        {isSelected && (
-          <Check size={16} className="text-colors-orange-500 ml-auto" />
-        )}
+        {isSelected && <Check size={16} className="text-orange-500 ml-auto" />}
       </li>
     );
   };
 
   return (
     <nav aria-label="Country selection" ref={buttonRef}>
-      <div className="relative top-0 left-0 min-w-[60px]">
+      <div className="relative top-0 left-0 min-w-[60px] z-[99]">
         <button
           className="flex items-center gap-2 cursor-pointer text-xs sm:text-sm"
           onClick={handleToggleSelect}
@@ -118,7 +116,7 @@ const SelectCountry = ({ items }: SelectCountryProps) => {
         {isOpen && (
           <ul
             role="listbox"
-            className="z-10 bg-gray-50 w-32 absolute top-10 -left-14 sm:-left-10 rounded-sm flex py-2 flex-col justify-center border-1 border border-gray-200"
+            className="z-10 bg-white w-32 absolute top-10 -left-14 sm:-left-10 rounded-sm flex py-2 flex-col justify-center border-1 border border-gray-200"
           >
             {items.map((item) => (
               <CountryOption key={item.id} item={item} />
