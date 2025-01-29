@@ -25,5 +25,15 @@
       "shop-now": "Kup teraz",
       "price": "zł"
     }
+  },
+  "FeaturesBar": {
+    "fasted-deliver": "Szybka dostawa",
+    "fasted-deliver-desc": "Dostawa w ciągu 72 godzin",
+    "secure-payment": "Bezpieczna płatność",
+    "secure-payment-desc": "Gwarantujemy bezpieczeństwo Twoich płatności",
+    "free-shipping": "Darmowa wysyłka",
+    "free-shipping-desc": "Darmowa wysyłka dla wszystkich zamówień powyżej 150 zł",
+    "support": "Wsparcie 24/7",
+    "support-desc": "Kontakt na żywo/wiadomość"
   }
 }

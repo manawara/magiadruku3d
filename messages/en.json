@@ -25,5 +25,15 @@
       "shop-now": "Shop Now",
       "price": "$"
     }
+  },
+  "FeaturesBar": {
+    "fasted-deliver": "Fasted deliver",
+    "fasted-deliver-desc": "Delivery in 72/H",
+    "secure-payment": "Secure Payment",
+    "secure-payment-desc": "Your money is safe",
+    "free-shipping": "Free shipping",
+    "free-shipping-desc": "Free shipping on all orders over $50.",
+    "support": "Support 24/7",
+    "support-desc": "Live contact/message"
   }
 }
