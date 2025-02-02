@@ -160,3 +160,22 @@ export const button = cva("rounded border-2 cursor-pointer", {
     size: "medium",
   },
 });
+
+export const buttonLink = cva(
+  "text-[16px] group font-semibold capitalize py-2 relative bottom-0 hover:before:w-full before:top-[100%] before:content-[''] before:block before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:duration-300",
+  {
+    variants: {
+      color: {
+        primary: "text-orange-500  before:bg-orange-500",
+        info: "text-blue-600 before:bg-blue-600",
+        success: "bg-green-500 before:bg-green-500 ",
+        warning: "bg-yellow-300 before:bg-yellow-300",
+        danger: "bg-red-500 before:bg-red-500",
+      },
+    },
+
+    defaultVariants: {
+      color: "primary",
+    },
+  }
+);

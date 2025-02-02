@@ -6,27 +6,33 @@ import { LucideProps } from "lucide-react";
 import Link from "next/link";
 import { slugify } from "@/lib/helper";
 type IconWithTextProps = {
+  onAction?: () => void;
   icon: keyof typeof LucideIcons;
-  label: string;
+  label?: string;
   sizeIcon?: number | string;
-  color?: string;
+  colorIcon?: string;
+  colorIconHover?: string;
   sizeText?: string;
   colorText?: string;
   mode?: "tel" | "mail";
   link?: string;
   className?: string;
+  animate?: boolean;
 };
 
 const IconWithText = ({
+  onAction,
   icon,
   label,
   sizeIcon = "text-sm",
-  color = "text-gray-500",
+  colorIcon = "text-gray-500",
+  colorIconHover = "text-orange-500",
   sizeText = "text-sm",
   colorText = "text-gray-600",
   mode,
   link,
   className,
+  animate = false,
 }: IconWithTextProps) => {
   const IconComponent = LucideIcons[icon] as ForwardRefExoticComponent<
     Omit<LucideProps, "ref">
@@ -38,50 +44,58 @@ const IconWithText = ({
   }
 
   return (
-    <motion.section
-      className={`flex items-center gap-2  py-4 cursor-pointer max-w-fit ${className} group`}
+    <motion.div
+      className={`flex items-center gap-2  py-4 cursor-pointer max-w-fit ${className} group border-[1px] transition-all duration-300 border-transparent border-solid`}
       whileHover="hover"
+      onClick={onAction}
     >
       <motion.div
-        variants={{
-          hover: {
-            scale: [1, 1.2, 1],
-            transition: {
-              repeat: Infinity,
-              duration: 1,
-            },
-          },
-        }}
+        variants={
+          animate
+            ? {
+                hover: {
+                  scale: [1, 1.2, 1],
+                  transition: {
+                    repeat: Infinity,
+                    duration: 1,
+                  },
+                },
+              }
+            : {}
+        }
       >
         <IconComponent
-          className={`${color} ${sizeIcon} group-hover:text-orange-500 transition-colors duration-100 ease-linear`}
+          className={`${colorIcon} self-center group-hover:${colorIconHover} transition-colors duration-100 ease-linear`}
           strokeWidth={1.5}
+          size={sizeIcon}
         />
       </motion.div>
-      <p
-        className={`${colorText} ${sizeText} font-extralight max-lg:!text-[11px]`}
-      >
-        {!mode &&
-          (link ? (
+      {label && (
+        <p
+          className={`${colorText} max-lg:text-[11px] ${sizeText} font-extralight `}
+        >
+          {!mode &&
+            (link ? (
+              <Link
+                href={`${slugify(link)}`}
+                className="group-hover:text-orange-500  transition-colors duration-100 ease-linear"
+              >
+                {label}
+              </Link>
+            ) : (
+              label
+            ))}
+          {mode && (
             <Link
-              href={`${slugify(link)}`}
-              className="group-hover:text-orange-500  transition-colors duration-100 ease-linear"
+              href={`${mode === "tel" ? "tel:" : "mailto:"}${label}`}
+              className="currentColor font-semibold  group-hover:text-orange-500 transition-colors duration-100 ease-linear "
             >
               {label}
             </Link>
-          ) : (
-            label
-          ))}
-        {mode && (
-          <Link
-            href={`${mode === "tel" ? "tel:" : "mailto:"}${label}`}
-            className="currentColor font-semibold  group-hover:text-orange-500 transition-colors duration-100 ease-linear "
-          >
-            {label}
-          </Link>
-        )}
-      </p>
-    </motion.section>
+          )}
+        </p>
+      )}
+    </motion.div>
   );
 };
 

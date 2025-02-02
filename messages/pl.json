@@ -35,5 +35,6 @@
     "free-shipping-desc": "Darmowa wysyłka dla wszystkich zamówień powyżej 150 zł",
     "support": "Wsparcie 24/7",
     "support-desc": "Kontakt na żywo/wiadomość"
-  }
+  },
+  "Currency": "zł"
 }

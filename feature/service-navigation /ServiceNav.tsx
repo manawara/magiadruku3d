@@ -19,21 +19,25 @@ const ServiceNav = async () => {
           categories={category}
         />
         <IconWithText
+          sizeIcon={17}
           icon="MapPinned"
           label={t("track-order")}
           link={t("track-order")}
         />
         <IconWithText
+          sizeIcon={17}
           icon="Headphones"
           label={t("customer-support")}
           link={t("customer-support")}
         />
         <IconWithText
+          sizeIcon={17}
           icon="Info"
           label={t("need-help")}
           link={t("need-help")}
         />
         <IconWithText
+          sizeIcon={17}
           icon="Phone"
           mode="tel"
           label="+48 531-770-282"

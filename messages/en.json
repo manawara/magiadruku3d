@@ -35,5 +35,6 @@
     "free-shipping-desc": "Free shipping on all orders over $50.",
     "support": "Support 24/7",
     "support-desc": "Live contact/message"
-  }
+  },
+  "Currency": "$"
 }
