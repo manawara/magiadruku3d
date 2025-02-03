@@ -18,7 +18,7 @@ const publicSans = Public_Sans({
 
 interface LocaleLayoutProps {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
@@ -29,7 +29,7 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!routing.locales.includes(locale as SupportedLocale)) {
     return redirect(`/${routing.defaultLocale}`);
