@@ -2,7 +2,7 @@ import React from "react";
 
 type CategoryProps = {
   title: string;
-  colorText: string;
+  colorText?: string;
 };
 
 const Category = ({ title, colorText = "text-blue-600" }: CategoryProps) => {

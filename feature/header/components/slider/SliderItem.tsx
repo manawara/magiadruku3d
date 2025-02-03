@@ -31,7 +31,7 @@ const SliderItem = ({
         exit="exit"
       >
         <div className="flex flex-col justify-center max-sm:order-2">
-          <Category title={subtitle} />
+          <Category title={subtitle as string} />
           <h2 className="text-gray-900 text-4xl font-semibold my-2">
             {title || "Xbox Consoles"}
           </h2>
