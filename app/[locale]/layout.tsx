@@ -15,33 +15,31 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 });
 
-async function validateLocale(locale: string) {
-  if (!routing.locales.includes(locale as SupportedLocale)) {
-    redirect(`/${routing.defaultLocale}`);
-  }
-  return locale;
-}
-
-export default async function LocaleLayout(props: {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  // Await the params object first
-  const params = await props.params;
+  const locale = params.locale as SupportedLocale;
 
-  const [validatedLocale, messages] = await Promise.all([
-    validateLocale(params.locale),
-    getMessages(),
-  ]);
+  // Bezpośrednie przekierowanie, jeśli lokalizacja jest nieprawidłowa
+  if (!routing.locales.includes(locale)) {
+    return redirect(`/${routing.defaultLocale}`);
+  }
+
+  // Pobranie wiadomości dla danej lokalizacji
+  const messages = await getMessages();
 
   return (
-    <html lang={validatedLocale}>
+    <html lang={locale}>
       <body className={`${publicSans.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <Header />
             <main className="flex flex-col z-0 overflow-hidden px-4 max-md:mb-[66px]">
-              {props.children}
+              {children}
             </main>
           </QueryProvider>
         </NextIntlClientProvider>
