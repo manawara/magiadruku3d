@@ -1,6 +1,11 @@
 import { useTranslations } from "next-intl";
 
-const Price = ({ price, className }) => {
+type PriceProps = {
+  price: string;
+  className: string;
+};
+
+const Price = ({ price, className }: PriceProps) => {
   const t = useTranslations("Banner.Slider");
   return (
     <div
