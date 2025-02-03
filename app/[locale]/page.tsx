@@ -2,6 +2,7 @@ import BestDeals from "@/feature/best-deals/BestDeals";
 import FeaturesBar from "@/feature/features-bar/FeaturesBar";
 import MainBanner from "@/feature/header/components/banner/MainBanner";
 import ServiceNav from "@/feature/service-navigation /ServiceNav";
+import ShopCategory from "@/feature/shop-category/ShopCategory";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
         <MainBanner />
         <FeaturesBar />
         <BestDeals />
+        <ShopCategory />
       </div>
     </>
   );
