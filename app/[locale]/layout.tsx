@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
@@ -17,7 +17,7 @@ const publicSans = Public_Sans({
 
 async function validateLocale(locale: string) {
   if (!routing.locales.includes(locale as SupportedLocale)) {
-    notFound();
+    redirect(`/${routing.defaultLocale}`);
   }
   return locale;
 }
