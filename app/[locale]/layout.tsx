@@ -7,6 +7,7 @@ import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
 import Header from "@/feature/header/Header";
 import QueryProvider from "@/provider/QueryProvider";
+import { ReactNode } from "react";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -15,21 +16,23 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 });
 
+interface LocaleLayoutProps {
+  children: ReactNode;
+  params: { locale: string };
+}
+
 export default async function LocaleLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: LocaleLayoutProps) {
   const locale = params.locale as SupportedLocale;
 
-  // Bezpośrednie przekierowanie, jeśli lokalizacja jest nieprawidłowa
+  // Direct redirect if the locale is invalid
   if (!routing.locales.includes(locale)) {
     return redirect(`/${routing.defaultLocale}`);
   }
 
-  // Pobranie wiadomości dla danej lokalizacji
+  // Fetch messages for the given locale
   const messages = await getMessages();
 
   return (
