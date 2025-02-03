@@ -66,7 +66,8 @@ const SelectCountry = ({ items }: SelectCountryProps) => {
         if (typeof setCookie === "function") {
           setCookie(countryTag, {});
         }
-        router.push("/");
+        console.log(countryTag);
+        router.push("/" + countryTag);
       } catch (error) {
         console.error("Error selecting country:", error);
       }
