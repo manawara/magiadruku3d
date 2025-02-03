@@ -21,19 +21,21 @@ interface LocaleLayoutProps {
   params: { locale: string };
 }
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const locale = params.locale as SupportedLocale;
+  const { locale } = await params;
 
-  // Direct redirect if the locale is invalid
-  if (!routing.locales.includes(locale)) {
+  if (!routing.locales.includes(locale as SupportedLocale)) {
     return redirect(`/${routing.defaultLocale}`);
   }
 
-  // Fetch messages for the given locale
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
