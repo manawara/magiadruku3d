@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 type PriceProps = {
-  price: string;
+  price: number;
   className: string;
 };
 
