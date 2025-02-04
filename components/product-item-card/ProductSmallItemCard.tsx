@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { getTranslations } from "next-intl/server";
 import IconWithText from "../icon-with-text/IconWithText";
 import Link from "next/link";
+import Stars from "../stars/Stars";
 
 type ProductSmallItemCardProps = {
   title: string;
@@ -16,6 +17,8 @@ type ProductSmallItemCardProps = {
   count?: number;
   isSoldOut?: boolean;
   isHot?: boolean;
+  shadow?: boolean;
+  rating?: number;
 };
 
 const ProductSmallItemCard = async ({
@@ -23,13 +26,19 @@ const ProductSmallItemCard = async ({
   image,
   price,
   discount,
+  rating,
   count = 0,
   isSoldOut,
   isHot = true,
+  shadow = false,
 }: ProductSmallItemCardProps) => {
   const t = await getTranslations();
   return (
-    <article className="relative w-full  border border-gray-100 p-4">
+    <article
+      className={`relative w-full  border border-gray-100 p-4 ${
+        shadow ? "hover:shadow-xl" : ""
+      }`}
+    >
       <div
         className="flex justify-start flex-col gap-2 absolute"
         color="secondary"
@@ -71,6 +80,7 @@ const ProductSmallItemCard = async ({
           alt={image.alt}
           className="max-w-64 object-cover flex"
         />
+
         <div className="invisible group-hover:visible group-hover:opacity-100 absolute top-0 bottom-0 left-0 right-0 opacity-0 transition-opacity duration-200">
           <div className="flex justify-center gap-2 items-center  absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
             <IconWithText
@@ -103,7 +113,8 @@ const ProductSmallItemCard = async ({
           </div>
         </div>
       </div>
-      <h3 className="my-4 line-clamp-2 text-sm">{title}</h3>
+      {rating && <Stars rating={rating} count={2} color="red" />}
+      <h3 className="my-3 line-clamp-2 text-sm">{title}</h3>
       <p className="text-blue-500 font-semibold">
         {!discount ? (
           `${price} ${t("Currency")}`

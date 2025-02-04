@@ -162,7 +162,7 @@ export const button = cva("rounded border-2 cursor-pointer", {
 });
 
 export const buttonLink = cva(
-  "text-[16px] group font-semibold capitalize py-2 relative bottom-0 hover:before:w-full before:top-[100%] before:content-[''] before:block before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:duration-300",
+  "group font-semibold capitalize py-2 relative bottom-0 hover:before:w-full before:top-[100%] before:content-[''] before:block before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:duration-300",
   {
     variants: {
       color: {
@@ -174,6 +174,54 @@ export const buttonLink = cva(
       },
     },
 
+    defaultVariants: {
+      color: "primary",
+    },
+  }
+);
+
+export const buttonHighlight = cva(
+  "text-sm text-gray-600 hover:text-gray-900 py-2 px-3 rounded-sm group font-semibold capitalize  relative bottom-0 hover:before:w-full before:top-[100%] before:content-[''] before:block before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:duration-300",
+  {
+    variants: {
+      color: {
+        primary: "hover:bg-gray-100",
+        info: "before:bg-blue-600",
+        success: "before:bg-green-500 ",
+        warning: "before:bg-yellow-300",
+        danger: " before:bg-red-500",
+      },
+      isActive: {
+        true: "text-gray-950",
+      },
+    },
+    compoundVariants: [
+      {
+        color: "primary",
+        isActive: true,
+        class: "before:!bg-orange-500 before:w-full ",
+      },
+      {
+        color: "info",
+        isActive: true,
+        class: "before:!bg-blue-500 before:w-full ",
+      },
+      {
+        color: "success",
+        isActive: true,
+        class: "before:!bg-green-500 before:w-full ",
+      },
+      {
+        color: "warning",
+        isActive: true,
+        class: "before:!bg-yellow-500 before:w-full ",
+      },
+      {
+        color: "danger",
+        isActive: true,
+        class: "before:!bg-red-500 before:w-full ",
+      },
+    ],
     defaultVariants: {
       color: "primary",
     },
