@@ -44,7 +44,7 @@ const ProductShowCase = async () => {
   const t = await getTranslations("ProductListCard");
   return (
     <section className="container mx-auto my-8">
-      <ul className="py-4 grid grid-cols-4 gap-4">
+      <ul className="py-4 grid max-md:grid-cols-1 max-xl:grid-cols-2 max-xl:gap-10 grid-cols-4 gap-4">
         <ProductListCard
           products={products}
           titleList={t("flash-sale-today")}
