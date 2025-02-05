@@ -43,7 +43,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <Header />
-            <main className="flex flex-col z-0 overflow-hidden px-4 max-md:mb-[66px]">
+            <main className="flex flex-col z-0 overflow-hidden max-md:mb-[66px]">
               {children}
             </main>
           </QueryProvider>

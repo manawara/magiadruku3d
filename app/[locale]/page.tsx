@@ -6,10 +6,12 @@ import PromoBanner from "@/feature/promo-banner/PromoBanner";
 import ServiceNav from "@/feature/service-navigation /ServiceNav";
 import ShopCategory from "@/feature/shop-category/ShopCategory";
 import ProductShowCase from "@/feature/product-show-case/components/ProductShowCase";
+import NewsLetter from "@/feature/newsletter/components/NewsLetter";
+
 export default function HomePage() {
   return (
     <>
-      <div>
+      <div className="px-4">
         <ServiceNav />
         <MainBanner />
         <FeaturesBar />
@@ -19,6 +21,7 @@ export default function HomePage() {
         <PromoBanner />
         <ProductShowCase />
       </div>
+      <NewsLetter />
     </>
   );
 }
