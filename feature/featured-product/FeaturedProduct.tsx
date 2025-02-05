@@ -2,11 +2,14 @@ import React from "react";
 import NavProduct from "./NavProduct";
 import ProductSmallItemCard from "@/components/product-item-card/ProductSmallItemCard";
 import iconCard from "@/public/placeholder_productItemCard.png";
-const FeaturedProduct = () => {
+import { getTranslations } from "next-intl/server";
+
+const FeaturedProduct = async () => {
+  const t = await getTranslations();
   return (
     <section className="container mx-auto my-9 flex flex-col">
       <div className="flex items-center justify-between max-lg:flex-col">
-        <h2 className="text-2xl font-semibold">Featured Products</h2>
+        <h2 className="text-2xl font-semibold">{t("FeaturedProducts")}</h2>
         <NavProduct />
       </div>
 
