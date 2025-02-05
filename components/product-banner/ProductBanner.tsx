@@ -29,11 +29,13 @@ const ProductBanner = ({
 }: ProductBannerProps) => {
   return (
     <div
-      className={`${className} rounded p-6 lg:p-10 relative top-0 left-0 grid grid-cols-2 `}
+      className={`${className} rounded p-6 lg:p-10 relative top-0 left-0 flex flex-col sm:grid sm:grid-cols-2 `}
     >
-      {price && <Price price={price} className="absolute top-4 right-4" />}
-      <div className="flex flex-col">
+      <div className="absolute top-10 left-6 lg:left-10">
         {label && <Tag color={tagColor}>{label}</Tag>}
+      </div>
+      {price && <Price price={price} className="absolute top-8 right-4" />}
+      <div className="flex flex-col order-2 sm:order-1 sm:mt-16">
         <h3 className="mt-3 text-3xl font-semibold">{title}</h3>
         <p className="text-inherit py-4">{description}</p>
         <Button
@@ -45,7 +47,7 @@ const ProductBanner = ({
           shop now
         </Button>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-center sm:justify-end order-1 sm:order-2 mt-16 sm:mt-0">
         <Image
           src={image.src}
           alt={image.alt}
