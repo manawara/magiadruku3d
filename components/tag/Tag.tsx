@@ -10,7 +10,9 @@ type TagProps = {
 
 const Tag = ({ children, color, size, weight }: TagProps) => {
   return (
-    <div className={`${tag({ color, size, weight })} z-10`}>{children}</div>
+    <div className={`${tag({ color, size, weight })} z-10 max-w-max`}>
+      {children}
+    </div>
   );
 };
 

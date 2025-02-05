@@ -36,5 +36,11 @@
     "support": "Support 24/7",
     "support-desc": "Live contact/message"
   },
-  "Currency": "$"
+  "Currency": "$",
+  "ProductListCard": {
+    "flash-sale-today": "flash sale today",
+    "best-sellers": "Best sellers",
+    "top-rated": "Top rated",
+    "new-arrival": "New arrival"
+  }
 }

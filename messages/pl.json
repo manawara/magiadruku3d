@@ -36,5 +36,11 @@
     "support": "Wsparcie 24/7",
     "support-desc": "Kontakt na żywo/wiadomość"
   },
-  "Currency": "zł"
+  "Currency": "zł",
+  "ProductListCard": {
+    "flash-sale-today": "Wyprzedaż",
+    "best-sellers": "Bestsellery",
+    "top-rated": "Najwyżej oceniane",
+    "new-arrival": "Nowości"
+  }
 }

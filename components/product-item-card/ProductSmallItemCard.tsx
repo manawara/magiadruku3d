@@ -36,7 +36,7 @@ const ProductSmallItemCard = async ({
   return (
     <article
       className={`relative w-full  border border-gray-100 p-4 ${
-        shadow ? "hover:shadow-xl" : ""
+        shadow ? "hover:shadow-xl duration-200 transition-shadow" : ""
       }`}
     >
       <div
