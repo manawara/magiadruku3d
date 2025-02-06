@@ -3,7 +3,7 @@ import { tag } from "./variants";
 import { IntentType } from "@/types";
 type TagProps = {
   children: ReactNode;
-  color?: IntentType | "secondary";
+  color?: IntentType | "secondary" | "tertiary";
   size?: "small" | "medium" | "large";
   weight?: "regular" | "semiBold" | "bold";
 };

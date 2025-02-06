@@ -168,9 +168,9 @@ export const buttonLink = cva(
       color: {
         primary: "text-orange-500  before:bg-orange-500",
         info: "text-blue-600 before:bg-blue-600",
-        success: "bg-green-500 before:bg-green-500 ",
-        warning: "bg-yellow-300 before:bg-yellow-300",
-        danger: "bg-red-500 before:bg-red-500",
+        success: "text-green-500 before:bg-green-500 ",
+        warning: "text-yellow-300 before:bg-yellow-300",
+        danger: "text-red-500 before:bg-red-500",
       },
     },
 

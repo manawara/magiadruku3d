@@ -6,8 +6,10 @@ export const tag = cva(
       color: {
         primary: "bg-orange-400 text-gray-950",
         secondary: "bg-gray-400 text-white",
+        tertiary:
+          "bg-transparent border-[1px] border-gray-800 text-gray-50 hover:border-gray-50 hover:bg-gray-900",
         info: "bg-blue-500 text-white",
-        success: "bg-green-5 text-white ",
+        success: "bg-green-500 text-white ",
         warning: "bg-yellow-300 text-gray-950",
         danger: "bg-red-500 text-white",
       },

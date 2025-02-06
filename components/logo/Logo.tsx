@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import logoIcon from "@/public/magiaLogo.png";
 import Link from "next/link";
-const Logo = () => {
+const Logo = ({ size = 50 }) => {
   return (
     <Link href="/" className="inline-flex items-center group cursor-pointer">
       <Image
         src={logoIcon}
-        width={50}
+        width={size}
         alt="logo magiadruku3d"
         className="group-hover:scale-105 duration-300"
       />

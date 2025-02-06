@@ -8,6 +8,7 @@ import "../../app/globals.css";
 import Header from "@/feature/header/Header";
 import QueryProvider from "@/provider/QueryProvider";
 import { ReactNode } from "react";
+import Footer from "@/feature/footer/components/Footer";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
             <main className="flex flex-col z-0 overflow-hidden max-md:mb-[66px]">
               {children}
             </main>
+            <Footer />
           </QueryProvider>
         </NextIntlClientProvider>
       </body>
