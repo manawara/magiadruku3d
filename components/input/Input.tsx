@@ -20,7 +20,7 @@ const Input = ({
         type={type}
         name={name}
         placeholder={placeholder}
-        className="outline-none px-4 py-2 text-sm font-thin rounded-sm placeholder:text-gray-500 text-gray-700 border-gray-400 w-full"
+        className="outline-none px-4 py-2 text-sm font-thin rounded-sm placeholder:text-gray-500 text-gray-700 border-gray-100 w-full border"
         {...rest}
       />
       {children && (
