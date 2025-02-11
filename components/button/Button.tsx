@@ -10,11 +10,12 @@ type BaseButtonProps = {
   disabled?: boolean;
   icon?: boolean;
   fill?: boolean;
+  onClick: () => void;
   className?: string;
 } & ChildrenType;
 
 type IntentButtonProps = BaseButtonProps & {
-  intent: IntentType;
+  intent: IntentType | "secondary";
   outline?: never;
 };
 
@@ -38,6 +39,7 @@ const Button = ({
   soft,
   icon,
   className,
+  onClick,
 }: ButtonProps) => {
   return (
     <button
@@ -48,6 +50,7 @@ const Button = ({
         outline,
         soft,
       })}`}
+      onClick={onClick}
     >
       {children}
       {icon && (

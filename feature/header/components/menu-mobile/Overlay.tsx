@@ -12,7 +12,7 @@ const Overlay = ({ onClose }: OverlayProps) => {
       animate="open"
       exit="closed"
       variants={overlayVariants}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 md:hidden"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 "
       onClick={onClose}
     />
   );

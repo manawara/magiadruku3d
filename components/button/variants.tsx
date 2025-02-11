@@ -5,6 +5,8 @@ export const button = cva("rounded border-2 cursor-pointer", {
     intent: {
       primary:
         "text-white bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600",
+      secondary:
+        "bg-gray-100 hover:bg-gray-100 text-gray-900 border-gray-100 hover:border-grau-100",
       info: "bg-blue-500 hover:bg-blue-600 text-white",
       success:
         "bg-green-500 hover:bg-green-600 border-green-500 hover:border-green-600 text-white ",

@@ -76,13 +76,13 @@ const Select = ({
           />
         </span>
         {open && (
-          <ul className="absolute top-full border border-gray-100 left-0 mt-1 rounded-md w-full">
+          <ul className="absolutz z-10 top-full border bg-white border-gray-100 left-0 mt-1 rounded-md w-full">
             {sortOptions.map(({ name, id, value }) => (
               <li
                 key={id}
                 value={value || name}
-                className={`py-2 px-3 hover:bg-gray-50 cursor-pointer text-sm ${
-                  name === sort.name && id === sort.id && "font-semibold"
+                className={`py-2 px-3 bg-white hover:bg-gray-50 cursor-pointer text-sm  ${
+                  name === sort.name && id === sort.id && "font-semibold "
                 }`}
                 onClick={() => handleChangeSort(name, id)}
               >

@@ -71,7 +71,7 @@ const FeaturedProduct = async () => {
             src: iconCard,
             alt: "ssss",
           }}
-        />{" "}
+        />
         <ProductSmallItemCard
           title="ssss"
           price={22}

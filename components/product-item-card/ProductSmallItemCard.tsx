@@ -113,7 +113,7 @@ const ProductSmallItemCard = async ({
           </div>
         </div>
       </div>
-      {rating && <Stars rating={rating} count={2} color="red" />}
+      {rating && <Stars rating={rating} count={2} color="yellow" />}
       <h3 className="my-3 line-clamp-2 text-sm">{title}</h3>
       <p className="text-blue-500 font-semibold">
         {!discount ? (
