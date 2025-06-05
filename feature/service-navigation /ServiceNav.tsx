@@ -3,7 +3,7 @@ import Divider from "@/components/divider/Divider";
 import IconWithText from "@/components/icon-with-text/IconWithText";
 import Select from "@/components/multi-select/Select";
 import { getTranslations } from "next-intl/server";
-import { getCategory } from "@/lib/action/category";
+import { getCategory } from "@/app/action/category";
 import { getLocale } from "next-intl/server";
 const ServiceNav = async () => {
   const locale = await getLocale();

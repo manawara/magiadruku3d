@@ -44,5 +44,43 @@
     "top-rated": "Top rated",
     "new-arrival": "New arrival"
   },
-  "Home": "Home"
+  "Home": "Home",
+  "login": {
+    "invalidFields": "Invalid fields",
+    "wrongCredentials": "You entered incorrect data!",
+    "success": "Login successful",
+    "somethingWentWrong": "Oops... Something went wrong. Try again"
+  },
+  "register": {
+    "accountExists": "An account with this email already exists!",
+    "success": "Account created successfully!"
+  },
+
+  "Backend": {
+    "category": "Category",
+    "action": "Action",
+    "selectTag": {
+      "label": "Choose a tag",
+      "defaultValue": "No tag"
+    },
+    "dynamicInput": {
+      "optional": "optional",
+      "subCategory": "Subcategory"
+    },
+    "formCategoryEdit": {
+      "title": "Edit Category",
+      "titleCategory": "Category Information",
+      "categoryName": "Category Name",
+      "categoryMain": "Category",
+      "categorySubMain": "Subcategory",
+      "metaOptionsTitle": "Meta Options",
+      "metaTitle": "Meta Title",
+      "metaDescription": "Meta Description",
+      "updateButton": "Update",
+      "updating": "Updating in Progress",
+      "addCategory": "Add Category",
+      "updateSuccess": "Category has been updated",
+      "pendingMessage": "Data is being updated..."
+    }
+  }
 }

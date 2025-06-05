@@ -5,12 +5,8 @@ import { routing } from "@/i18n/routing";
 import { Public_Sans } from "next/font/google";
 import { SupportedLocale } from "@/types";
 import "../../app/globals.css";
-import Header from "@/feature/header/Header";
 import QueryProvider from "@/provider/QueryProvider";
 import { ReactNode } from "react";
-import Footer from "@/feature/footer/components/Footer";
-import ServiceNav from "@/feature/service-navigation /ServiceNav";
-import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -45,13 +41,9 @@ export default async function LocaleLayout({
       <body className={`${publicSans.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
-            <Header />
             <main className="flex flex-col z-0 overflow-hidden max-md:mb-[66px]">
-              <ServiceNav />
-              <Breadcrumb />
               {children}
             </main>
-            <Footer />
           </QueryProvider>
         </NextIntlClientProvider>
       </body>

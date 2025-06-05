@@ -7,7 +7,7 @@ import { menuVariants, childVariants } from "../../lib/variants";
 import Divider from "@/components/divider/Divider";
 import MultiMenu from "./MultiMenu";
 import MenuItem from "./MenuItem";
-import { getCategory } from "@/lib/action/category";
+import { getCategory } from "@/app/action/category";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 interface MenuProps {

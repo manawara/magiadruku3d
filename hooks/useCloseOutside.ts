@@ -1,7 +1,7 @@
 import { RefObject, useEffect } from "react";
 
 const useCloseOutside = (
-  ref: RefObject<HTMLButtonElement | null>,
+  ref: RefObject<HTMLElement | null>,
   onClose: () => void
 ) => {
   useEffect(() => {

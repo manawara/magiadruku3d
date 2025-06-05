@@ -10,7 +10,8 @@ type BaseButtonProps = {
   disabled?: boolean;
   icon?: boolean;
   fill?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
+  type: "submit" | "button";
   className?: string;
 } & ChildrenType;
 
@@ -40,9 +41,11 @@ const Button = ({
   icon,
   className,
   onClick,
+  type = "button",
 }: ButtonProps) => {
   return (
     <button
+      type={type}
       className={`inline-flex gap-2 items-center group ${className} ${button({
         intent,
         size,
