@@ -44,5 +44,115 @@
     "top-rated": "Najwyżej oceniane",
     "new-arrival": "Nowości"
   },
-  "Home": "Strona Główna"
+  "Home": "Strona Główna",
+
+  "login": {
+    "invalidFields": "Nieprawidłowe pola",
+    "wrongCredentials": "Wprowadziłeś błędne dane!",
+    "success": "Logowanie pomyślne",
+    "somethingWentWrong": "Upss... Coś poszło nie tak. Spróbuj ponownie"
+  },
+  "register": {
+    "accountExists": "Konto o podanym emailu istnieje!",
+    "success": "Konto zostało stworzone!"
+  },
+
+  "Backend": {
+    "category": "Kategoria",
+    "action": "Akcja",
+    "errorLoadingProducts": "Bład pobierania produktów! Spróbuj odświezyc stronę...",
+    "selectTag": {
+      "label": "Wybierz tag",
+      "defaultValue": "Bez Etykiety"
+    },
+    "dynamicInput": {
+      "optional": "opcjonalnie",
+      "subCategory": "Podkategoria"
+    },
+    "formCategoryEdit": {
+      "title": "Edycja kategorii",
+
+      "titleCategory": "Informacja o kategorii",
+      "categoryName": "Nazwa kategorii",
+      "categoryMain": "Kategoria",
+      "categorySubMain": "Podkategoria",
+      "metaOptionsTitle": "Meta opcje",
+      "metaTitle": "Meta tytuł",
+      "metaDescription": "Meta opis",
+      "updateButton": "Aktualizuj",
+      "updating": "Aktualizacje w toku",
+      "addCategory": "Dodaj kategorie",
+      "updateSuccess": "Kategoria została zaktualizowana",
+      "pendingMessage": "Dane są aktualizowane..."
+    },
+    "pagination": {
+      "items": "elementów",
+      "displayItems": "Wyświetlane elementy",
+      "showItems": "Ilość elementów"
+    },
+    "general": {
+      "labelUpload": "Upuść swoje obrazy tutaj lub kliknij, aby przeglądać",
+      "add": "Dodaj",
+      "adding": "Dodawanie",
+      "subCategory": "Podkategoria",
+      "allCategories": "Lista kategorii",
+      "allProducts": "Lista produktów",
+      "addCategory": "Dodaj kategorię",
+      "addProduct": "Dodaj produkt",
+      "actions": "Akcje",
+      "productName": "Nazwa produktu",
+      "deleteInfo": "Czy na pewno chcesz usunąć ",
+      "yes": "tak",
+      "no": "nie",
+      "price": "Cena",
+      "stock": "Stan magazynowy",
+      "category": "Kategoria",
+      "deleting": "Usuwanie",
+      "update": "Zapisz",
+      "updating": "Aktualizacja..."
+    },
+    "formCategoryAdd": {
+      "title": "Dodaj kategorię",
+      "titleCategory": "Informacja o kategorii",
+      "nameCategory": "Nazwa kategorii",
+      "placeholderNameCategory": "Wpisz nazwę kategorii",
+      "addSubCategory": "Dodaj podkategorię",
+      "metaOptionsTitle": "Meta opcje",
+      "metaTitle": "Meta tytuł",
+      "metaDescription": "Meta opis",
+      "pendingMessage": "Dane są wysyłane...",
+      "success": "Kategoria została dodana",
+      "errorMessage": "Kategoria nie została dodana! Spróbuj ponownie."
+    },
+
+    "formProductAdd": {
+      "titlePhoto": "Dodaj zdjęcia produktu",
+      "productName": "Nazwa produktu",
+
+      "itemsName": "Wpisz nazwę produktu",
+      "brand": "Marka",
+      "size": "Rozmiar",
+      "brandName": "Nazwa marki",
+      "weight": "Waga (g)",
+      "stock": "Stan magazynowy",
+      "quantity": "Ilość sztuk",
+      "selectTag": "Etykieta",
+      "color": "Kolory produktu",
+      "productDescription": "Opis produktu",
+      "pricingDetails": "Szczegóły cenowe",
+      "price": "Cena",
+      "discount": "Zniżka",
+      "tex": "Vat",
+      "success": "Produkt dodany pomyślnie!",
+      "pendingMessage": "Trwa dodawanie produktu...",
+      "errorMessage": "Wystąpił błąd podczas dodawania produktu."
+    },
+    "formEditProduct": {
+      "titleEdit": "Edytuj produkt",
+      "subCategory": "Podkategoria",
+      "updating": "Trwa aktualizowanie produktu...",
+      "success": "Produkt został pomyślnie zaktualizowany!",
+      "errorMessage": "Wystąpił błąd podczas aktualizowania produktu."
+    }
+  }
 }
