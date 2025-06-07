@@ -21,18 +21,18 @@ type SelectProps = {
   onChange?: (name: string, id: number, value: number | string) => void;
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const Select = ({
   sortOptions = [],
   label,
-  id = "sort-select",
   defaultValue = "",
   ariaLabel = "Sort by",
   onChange,
   className,
   value,
   placeholder = "Select an option",
+  ...rest
 }: SelectProps) => {
+  const id = rest.id ?? "sort-select";
   const [sort, setSort] = useState<{
     name: string;
     id: number;
