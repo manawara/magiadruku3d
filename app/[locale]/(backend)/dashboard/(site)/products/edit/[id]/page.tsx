@@ -1,5 +1,7 @@
 import { getProductByID } from "@/app/action/product";
-import FormProductEdit from "@/backend/feature/form/components/form-product-edit/FormProductEdit";
+import FormProductEdit, {
+  Product,
+} from "@/backend/feature/form/components/form-product-edit/FormProductEdit";
 import { localizedData } from "@/lib/helper";
 import React from "react";
 
@@ -11,13 +13,15 @@ type Props = {
 };
 
 const ProductEditPage = async ({ params }: Props) => {
-  const { id, locale } = await params;
+  const { id, locale } = params;
   const product = await getProductByID(+id);
-  // Jeśli nie ma produktu, podaj np. null lub pusty obiekt,
-  // żeby FormProductEdit nie dostał undefined
-  console.log(product);
-  const dataProduct = product ? localizedData(product, locale) : null;
-  console.log(dataProduct);
+
+  const dataProduct = product
+    ? (localizedData(product, locale) as Product)
+    : null;
+
+  if (!dataProduct) return <div>Brak produktu</div>;
+
   return <FormProductEdit product={dataProduct} />;
 };
 

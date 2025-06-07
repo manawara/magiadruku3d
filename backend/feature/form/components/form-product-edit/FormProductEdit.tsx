@@ -28,7 +28,7 @@ import { Notyfi } from "@/backend/feature/notyfi/components/Notyfi/Notyfi";
 import { convertTargetLang } from "@/lib/helper";
 import { ProductType, updatedProduct } from "@/app/action/product";
 
-interface Product {
+export interface Product {
   id: number;
   productName: string;
   images?: string | string[] | null;
@@ -66,7 +66,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
   // Dodaj stan dla kontrolowania powiadomień
   const [showSuccess, setShowSuccess] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
-
+  console.log(product);
   const [selectedMainCategory, setSelectedMainCategory] = useState<
     string | null
   >(product.categoryName ?? null);
@@ -74,6 +74,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
     product.categoryChildName ?? null
   );
   const locale = useLocale();
+
   const {
     productName,
     images,
@@ -255,6 +256,9 @@ const FormProductEdit = ({ product }: { product: Product }) => {
   };
 
   const initialUrls = images ? (Array.isArray(images) ? images : [images]) : [];
+
+  if (!product) return <div>Produkt nie został znaleziony</div>;
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>

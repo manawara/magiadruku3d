@@ -1,6 +1,7 @@
+import { ChildrenType } from "@/types";
 import React from "react";
 
-const ProductLayout = ({ children }) => {
+const ProductLayout = ({ children }: ChildrenType) => {
   return <div>{children}</div>;
 };
 

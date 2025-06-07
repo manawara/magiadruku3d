@@ -4,30 +4,51 @@ import PaginationButton from "./PaginationButton/PaginationButton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Select from "@/backend/components/select/Select";
 import { useTranslations } from "next-intl";
+
+type PaginationOptionType = {
+  action?: boolean;
+  elementsPerView?: number;
+};
+
+type PaginationType = {
+  options: PaginationOptionType;
+  className?: string;
+  totalItems: number;
+  onChoosePage: (item: number) => void;
+  onChange: (id: number, name: string, value: number) => void;
+};
 const Pagination = ({
   options = { action: false, elementsPerView: 10 },
   className,
   totalItems,
   onChange,
   onChoosePage,
-}) => {
-  const [currentPage, setCurrentPage] = useState(1);
+}: PaginationType) => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [showItem, setShowItem] = useState(options.elementsPerView || 10);
   const totalPages = Math.ceil(totalItems / showItem) || 1;
   const t = useTranslations("Backend.pagination");
-  const handleChangeShowItem = (id, name, value) => {
-    setShowItem(value);
+
+  // Fixed parameter order to match Select component expectation
+  const handleChangeShowItem = (
+    name: string,
+    id: number,
+    value: string | number
+  ) => {
+    const numericValue =
+      typeof value === "string" ? parseInt(value, 10) : value;
+    setShowItem(numericValue);
     setCurrentPage(1);
     if (onChange) {
-      onChange(id, name, value);
+      onChange(id, name, numericValue);
     }
   };
 
-  const handleChangePage = (value) => {
+  const handleChangePage = (value: number | string) => {
     if (value === "...") return;
-    setCurrentPage(value);
+    setCurrentPage(value as number);
     if (onChoosePage) {
-      onChoosePage(value);
+      onChoosePage(value as number);
     }
   };
 
@@ -115,7 +136,7 @@ const Pagination = ({
               size="medium"
               intent="primary"
               active={page === currentPage}
-              fill={page === currentPage ? "primary" : "outline"}
+              fill={page === currentPage ? "primary" : null}
               onClick={() => handleChangePage(page)}
             >
               {page}

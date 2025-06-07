@@ -204,5 +204,6 @@ export const localizedData = (
 ): Record<string, any> =>
   Object.entries(product).reduce((acc, [key, value]) => {
     acc[key] = getLocalizedValue(value, locale);
+    console.log(acc, "sssssss");
     return acc;
   }, {} as Record<string, any>);
