@@ -18,6 +18,7 @@ const ProductCard = async ({ img, title, price }: ProductCardProps) => {
         <h3 className="font-semibold text-lg">{title}</h3>
         <span className="text-blue-500 mb-2">{price} $</span>
         <Button
+          type="button"
           intent="primary"
           size="small"
           className="uppercase max-w-fit"

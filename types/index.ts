@@ -16,7 +16,7 @@ export interface CategoryChild {
 // Interface for the main category
 export interface MainCategory {
   id: number;
-  [key: string]: string | number | CategoryChild[] | undefined;
+  [key: string]: string | number | CategoryChild[] | undefined | null;
   children: CategoryChild[];
 }
 

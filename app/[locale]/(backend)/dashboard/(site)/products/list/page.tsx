@@ -5,9 +5,14 @@ import TableProduct from "@/backend/feature/table/components/TableProduct";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 
-const ProductPage = async ({ params }: { params: { locale: string } }) => {
-  const { locale } = params;
+const ProductPage = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) => {
+  const { locale } = await params; // Await the params promise
   const t = await getTranslations("Backend.general");
+
   return (
     <div className="w-full">
       <Card>

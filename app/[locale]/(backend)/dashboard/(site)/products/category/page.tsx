@@ -5,9 +5,16 @@ import TableCategory from "@/backend/feature/table/components/TableCategory";
 import React from "react";
 import { getTranslations } from "next-intl/server";
 
-const CategoryPage = async ({ params }: { params: { locale: string } }) => {
-  const { locale } = params;
+interface Props {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+const CategoryPage = async ({ params }: Props) => {
+  const { locale } = await params; // Await the params promise
   const t = await getTranslations("Backend.general");
+
   return (
     <div className="w-full">
       <Card>

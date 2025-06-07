@@ -6,7 +6,22 @@ import CategoryFilter from "@/feature/category-filter/components/CategoryFilter"
 import Divider from "@/components/divider/Divider";
 import { useState } from "react";
 
-const FilterMobile = ({ items, items2 }) => {
+type Value = {
+  min: number;
+  max: number;
+};
+
+type FilterMobileItem = {
+  label: string;
+  value: string | Value;
+};
+
+type FilterMobileType = {
+  items: FilterMobileItem[];
+  items2: FilterMobileItem[];
+};
+
+const FilterMobile = ({ items, items2 }: FilterMobileType) => {
   const [open, setOpen] = useState(false);
 
   const handleOpenModal = () => {

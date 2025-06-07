@@ -54,19 +54,20 @@ const MultiMenu = ({ label, categories }: MultiMenu) => {
                   >
                     {category.mainCategory as string}
                   </Link>
-                  {category.children.length > 0 && (
-                    <motion.ul className="ml-4 mt-2 space-y-1">
-                      {category.children.map((child) => (
-                        <motion.li
-                          key={child.id + child.name}
-                          variants={childVariants}
-                          className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer py-1"
-                        >
-                          {child.name}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  )}
+                  {Array.isArray(category.children) &&
+                    category.children.length > 0 && (
+                      <motion.ul className="ml-4 mt-2 space-y-1">
+                        {category.children.map((child) => (
+                          <motion.li
+                            key={child.id + child.name}
+                            variants={childVariants}
+                            className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer py-1"
+                          >
+                            {child.name}
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    )}
                 </motion.li>
               ))}
           </motion.ul>

@@ -6,14 +6,14 @@ import { localizedData } from "@/lib/helper";
 import React from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
     locale: string;
-  };
+  }>;
 };
 
 const ProductEditPage = async ({ params }: Props) => {
-  const { id, locale } = params;
+  const { id, locale } = await params; // Await the params promise
   const product = await getProductByID(+id);
 
   const dataProduct = product

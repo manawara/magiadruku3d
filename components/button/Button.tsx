@@ -11,7 +11,7 @@ type BaseButtonProps = {
   icon?: boolean;
   fill?: boolean;
   onClick?: () => void;
-  type: "submit" | "button";
+  type?: "submit" | "button";
   className?: string;
 } & ChildrenType;
 

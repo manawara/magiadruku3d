@@ -39,6 +39,7 @@ const ProductBanner = ({
         <h3 className="mt-3 text-3xl font-semibold">{title}</h3>
         <p className="text-inherit py-4">{description}</p>
         <Button
+          type="button"
           intent="primary"
           className="uppercase max-w-max font-semibold"
           size="medium"
