@@ -49,33 +49,5 @@ export const authConfig: NextAuthConfig = {
         }
       },
     }),
-    {
-      id: "furgonetka",
-      name: "Furgonetka",
-      type: "oauth",
-      clientId: process.env.FURGONETKA_CLIENT_ID,
-      clientSecret: process.env.FURGONETKA_CLIENT_SECRET,
-      authorization: {
-        url: "https://api.furgonetka.pl/oauth/authorize",
-        params: {
-          redirect_uri: process.env.FURGONETKA_REDIRECT_URI,
-          scope: "offline_access packages",
-          response_type: "code",
-        },
-      },
-      token: {
-        url: "https://api.furgonetka.pl/oauth/token",
-      },
-      userinfo: {
-        url: "https://api.furgonetka.pl/v1/user",
-      },
-      profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.name,
-          email: profile.email,
-        };
-      },
-    },
   ],
 };
