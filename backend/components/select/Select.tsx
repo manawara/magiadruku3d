@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 
 type sortOptionsType = {
-  name: string | string[]; // name może być stringiem lub tablicą stringów
+  name: string | string[];
   id: number;
   value?: string | number;
 };
@@ -21,6 +21,7 @@ type SelectProps = {
   onChange?: (name: string, id: number, value: number | string) => void;
 };
 
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const Select = ({
   sortOptions = [],
   label,
@@ -42,10 +43,8 @@ const Select = ({
     value: "",
   });
 
-  // Ref, aby defaultValue ustawić tylko raz
   const defaultValueSet = useRef(false);
 
-  // Funkcja pomocnicza do znajdowania opcji
   const findOption = useCallback(
     (searchValue: string | number) => {
       return sortOptions.find((option) => {
@@ -64,7 +63,6 @@ const Select = ({
     [sortOptions]
   );
 
-  // Funkcja pomocnicza do ustawiania stanu
   const setSelectedOption = useCallback(
     (option: sortOptionsType, selectedName?: string) => {
       const nameToUse = selectedName
@@ -82,7 +80,6 @@ const Select = ({
     []
   );
 
-  // Obsługa defaultValue i value
   useEffect(() => {
     if (value !== undefined) {
       if (value === "") {
@@ -156,7 +153,6 @@ const Select = ({
         </label>
       )}
 
-      {/* Ukryty natywny select dla accessibility */}
       <select
         id={id}
         {...(isControlled
@@ -193,7 +189,6 @@ const Select = ({
         })}
       </select>
 
-      {/* Widoczny customowy select */}
       <div className="relative top-0 left-0 w-full" ref={SelectRef}>
         <div
           className="flex items-center w-full py-2 px-3 rounded-sm border font-semibold border-gray-100 text-gray-700 text-xs justify-between gap-8 cursor-pointer"
