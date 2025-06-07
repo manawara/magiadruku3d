@@ -6,7 +6,7 @@ import React from "react";
 import { getTranslations } from "next-intl/server";
 
 const CategoryPage = async ({ params }: { params: { locale: string } }) => {
-  const { locale } = await params;
+  const { locale } = params;
   const t = await getTranslations("Backend.general");
   return (
     <div className="w-full">

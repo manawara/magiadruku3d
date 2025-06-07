@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 import React from "react";
 
 const ProductPage = async ({ params }: { params: { locale: string } }) => {
-  const { locale } = await params;
+  const { locale } = params;
   const t = await getTranslations("Backend.general");
   return (
     <div className="w-full">
