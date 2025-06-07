@@ -137,7 +137,6 @@ const Select = ({
   ) => {
     setSort({ name, id, value });
     setOpen(false);
-
     if (onChange) {
       onChange(name, id, value);
     }
@@ -179,10 +178,10 @@ const Select = ({
         <option value="" disabled>
           {placeholder}
         </option>
-        {sortOptions.map(({ name, id, value }) => {
+        {sortOptions.map(({ name, value }) => {
           const names = Array.isArray(name) ? name : [name];
           return names.map((n, index) => (
-            <option key={id + n + index} value={value ?? n}>
+            <option key={n + index} value={value ?? n}>
               {n}
             </option>
           ));
@@ -201,7 +200,7 @@ const Select = ({
           <span className="w-full">{sort.name || placeholder}</span>
           <ChevronDown
             size={18}
-            className={`${
+            className={`$${
               open ? "rotate-180" : "rotate-0"
             } duration-200 transition-transform`}
           />
