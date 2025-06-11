@@ -8,7 +8,7 @@ interface Carrier {
 const API_BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://magiadruku3d.vercel.app"
-    : "http://localhost:3000";
+    : "https://magiadruku3d.vercel.app";
 
 export const fetchCarriers = async (): Promise<Carrier[]> => {
   const response = await fetch(`${API_BASE_URL}/api/carriers`);
