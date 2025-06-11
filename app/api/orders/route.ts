@@ -45,64 +45,6 @@ export async function GET(req: NextRequest) {
       }
     );
   }
-
-  // Przykładowe dane zamówień dla Furgonetka.pl
-  const orders = [
-    {
-      id: "123",
-      name: "Zamówienie 123",
-      recipient: {
-        name: "Jan Kowalski",
-        street: "ul. Przykładowa 1",
-        city: "Warszawa",
-        postcode: "00-001",
-        country: "PL",
-        phone: "500500500",
-        email: "jan@example.com",
-      },
-      items: [{ name: "Produkt A", quantity: 1 }],
-      weight: 1.5,
-      dimensions: {
-        length: 20,
-        width: 15,
-        height: 10,
-      },
-      value: 99.99,
-      cod_amount: 0,
-      created_at: new Date().toISOString(),
-      status: "pending",
-    },
-    {
-      id: "124",
-      name: "Zamówienie 124",
-      recipient: {
-        name: "Anna Nowak",
-        street: "ul. Testowa 5/10",
-        city: "Kraków",
-        postcode: "30-001",
-        country: "PL",
-        phone: "600600600",
-        email: "anna@example.com",
-      },
-      items: [
-        { name: "Produkt B", quantity: 2 },
-        { name: "Produkt C", quantity: 1 },
-      ],
-      weight: 2.3,
-      dimensions: {
-        length: 25,
-        width: 20,
-        height: 15,
-      },
-      value: 149.99,
-      cod_amount: 149.99,
-      created_at: new Date().toISOString(),
-      status: "ready_to_ship",
-    },
-  ];
-
-  console.log("Zwracam zamówienia:", orders.length);
-  return NextResponse.json(orders, { headers: corsHeaders() });
 }
 
 export async function POST(req: NextRequest) {
@@ -113,41 +55,26 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { order_id } = body;
 
-    if (!order_id) {
+    // Prosta walidacja minimalnych danych
+    if (!body?.id || !body?.recipient || !body?.items) {
       return NextResponse.json(
-        { error: "order_id is required" },
+        { error: "Missing order data" },
         { status: 400 }
       );
     }
 
-    const order = {
-      id: order_id,
-      name: `Zamówienie ${order_id}`,
-      recipient: {
-        name: "Jan Kowalski",
-        street: "ul. Przykładowa 1",
-        city: "Warszawa",
-        postcode: "00-001",
-        country: "PL",
-        phone: "500500500",
-        email: "jan@example.com",
-      },
-      items: [{ name: "Produkt A", quantity: 1 }],
-      weight: 1.5,
-      dimensions: {
-        length: 20,
-        width: 15,
-        height: 10,
-      },
-      value: 99.99,
-      cod_amount: 0,
-      created_at: new Date().toISOString(),
-      status: "pending",
-    };
+    // W prawdziwej aplikacji tutaj możesz np. zapisać do bazy
+    console.log("Odebrano nowe zamówienie:", body);
 
-    return NextResponse.json(order);
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Zamówienie odebrane pomyślnie",
+        order: body,
+      },
+      { status: 201 }
+    );
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
