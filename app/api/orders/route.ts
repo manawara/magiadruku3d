@@ -12,7 +12,7 @@ function corsHeaders() {
   };
 }
 
-export async function OPTIONS(req: NextRequest) {
+export async function OPTIONS() {
   return new NextResponse(null, { status: 200, headers: corsHeaders() });
 }
 
@@ -61,15 +61,14 @@ export async function GET(req: NextRequest) {
         email: "jan@example.com",
       },
       items: [{ name: "Produkt A", quantity: 1 }],
-      // Dodatkowe pola wymagane przez Furgonetka.pl
-      weight: 1.5, // kg
+      weight: 1.5,
       dimensions: {
-        length: 20, // cm
-        width: 15, // cm
-        height: 10, // cm
+        length: 20,
+        width: 15,
+        height: 10,
       },
-      value: 99.99, // wartość przesyłki
-      cod_amount: 0, // kwota pobrania (0 jeśli brak)
+      value: 99.99,
+      cod_amount: 0,
       created_at: new Date().toISOString(),
       status: "pending",
     },
@@ -96,7 +95,7 @@ export async function GET(req: NextRequest) {
         height: 15,
       },
       value: 149.99,
-      cod_amount: 149.99, // przesyłka pobraniowa
+      cod_amount: 149.99,
       created_at: new Date().toISOString(),
       status: "ready_to_ship",
     },
@@ -106,7 +105,6 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(orders, { headers: corsHeaders() });
 }
 
-// Endpoint do pobierania pojedynczego zamówienia
 export async function POST(req: NextRequest) {
   const auth = req.headers.get("authorization");
   if (!auth || auth !== `Bearer ${AUTH_TOKEN}`) {
@@ -124,8 +122,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Tutaj możesz pobrać konkretne zamówienie z bazy danych
-    // Na razie zwracamy przykładowe dane
     const order = {
       id: order_id,
       name: `Zamówienie ${order_id}`,
@@ -152,53 +148,7 @@ export async function POST(req: NextRequest) {
     };
 
     return NextResponse.json(order);
-  } catch (error) {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
-  }
-}
-
-// app/api/furgonetka/tracking/route.ts
-// Endpoint do aktualizacji statusu przesyłki
-export async function PUT(req: NextRequest) {
-  const auth = req.headers.get("authorization");
-  if (!auth || auth !== `Bearer ${AUTH_TOKEN}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  try {
-    const body = await req.json();
-    const { order_id, tracking_number, status, tracking_url } = body;
-
-    if (!order_id || !tracking_number) {
-      return NextResponse.json(
-        {
-          error: "order_id and tracking_number are required",
-        },
-        { status: 400 }
-      );
-    }
-
-    // Tutaj możesz zaktualizować status zamówienia w bazie danych
-    console.log(`Aktualizacja zamówienia ${order_id}:`);
-    console.log(`- Numer przesyłki: ${tracking_number}`);
-    console.log(`- Status: ${status}`);
-    console.log(`- URL śledzenia: ${tracking_url}`);
-
-    // Przykład odpowiedzi
-    const updatedOrder = {
-      id: order_id,
-      tracking_number,
-      status: status || "shipped",
-      tracking_url,
-      updated_at: new Date().toISOString(),
-    };
-
-    return NextResponse.json({
-      success: true,
-      message: "Order updated successfully",
-      order: updatedOrder,
-    });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 }
