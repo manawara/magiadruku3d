@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch carriers" },
+      { error: "Failed to fetch carriers" || error },
       { status: 500 }
     );
   }
