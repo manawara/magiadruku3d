@@ -16,7 +16,7 @@ export type ProductType = {
   stock: number;
   tex: number;
   weight: number;
-  tag: string | Record<string, any>;
+  tag: string;
 };
 export const productNewAdd = async (data: ProductType) => {
   try {
@@ -124,5 +124,27 @@ export const updatedProduct = async (data: ProductType) => {
 export const deleteProduct = async (id: number) => {
   await db.product.delete({
     where: { id },
+  });
+};
+
+export const getProductTag = async (
+  tag: string,
+  limit: number = 8
+): Promise<any[]> => {
+  const count = await db.product.count({
+    where: { tag },
+  });
+
+  if (count === 0) return [];
+
+  const actualLimit = Math.min(limit, count);
+  const randomOffset = Math.floor(
+    Math.random() * Math.max(0, count - actualLimit + 1)
+  );
+
+  return await db.product.findMany({
+    where: { tag },
+    skip: randomOffset,
+    take: actualLimit,
   });
 };

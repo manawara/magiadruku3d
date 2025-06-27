@@ -39,6 +39,18 @@ const SidebarMenu = () => {
         },
       ],
     },
+
+    {
+      icon: "GalleryHorizontal",
+      name: "Banery",
+      children: [
+        {
+          name: "-- Baner główny",
+          link: "/dashboard/main-banner",
+        },
+      ],
+    },
+
     {
       icon: "Repeat",
       name: "User Interface (UI)",
@@ -149,6 +161,17 @@ const SidebarMenu = () => {
         {
           name: "-- Create",
           link: "./dashboard/customer/create",
+        },
+      ],
+    },
+
+    {
+      icon: "Car",
+      name: "Carriers",
+      children: [
+        {
+          name: "-- List",
+          link: "/dashboard/carriers",
         },
       ],
     },

@@ -37,6 +37,10 @@
     "support-desc": "Kontakt na żywo/wiadomość"
   },
   "Currency": "zł",
+  "AddToCart": "Do koszyka",
+  "Hot": "Gorąca oferta",
+  "Hot_2": "Promocja",
+  "off": "Zniżki",
   "FeaturedProducts": "Polecane produkty",
   "ProductListCard": {
     "flash-sale-today": "Wyprzedaż",
@@ -55,6 +59,12 @@
   "register": {
     "accountExists": "Konto o podanym emailu istnieje!",
     "success": "Konto zostało stworzone!"
+  },
+
+  "BestDeal": {
+    "title": "Najlepsze oferty",
+    "dealEnd": "Oferta kończy się za",
+    "seeAll": "Zobacz wszystkie"
   },
 
   "Backend": {
@@ -109,7 +119,8 @@
       "category": "Kategoria",
       "deleting": "Usuwanie",
       "update": "Zapisz",
-      "updating": "Aktualizacja..."
+      "updating": "Aktualizacja...",
+      "back": "Wróć"
     },
     "formCategoryAdd": {
       "title": "Dodaj kategorię",
@@ -153,6 +164,42 @@
       "updating": "Trwa aktualizowanie produktu...",
       "success": "Produkt został pomyślnie zaktualizowany!",
       "errorMessage": "Wystąpił błąd podczas aktualizowania produktu."
+    },
+
+    "mainBanner": {
+      "heading": "Główny Banner",
+      "title": "Tytuł",
+      "subTitle": "Podtytuł / opis",
+      "price": "Cena",
+      "status": "Status",
+      "order": "Kolejność",
+      "titleHeadingAdd": "Dodaj nowy banner",
+      "titleHeadingEdit": "Edytuj banner",
+      "titleForm": "Tytuł",
+      "placeholderTitle": "Wpisz tytuł",
+      "subTitleForm": "Podtytuł / opis",
+      "placeholderSubTitle": "Wpisz podtytuł / opis",
+      "priceForm": "Cena",
+      "placeholderPrice": "Wpisz cenę",
+      "orderForm": "Kolejność",
+      "placeholderOrder": "Wpisz numer kolejności 1 glowny banner 2 - prawa strona góra 3 - prawa strona dół",
+      "linkForm": "Url do produktu",
+      "placeholderLink": "Wpisz url do produktu",
+      "linkImageForm": "Url do obrazu",
+      "placeholderLinkImage": "Wpisz url do obrazu",
+      "add": "Dodaj",
+      "adding": "Dodawanie...",
+      "active": "Aktywny",
+      "inactive": "Nieakwtywny",
+      "update": "Aktualizuj",
+      "updating": "Aktualizacja...",
+      "discountForm": "Zniżka",
+      "placeholderDiscount": "Wpisz znizkę",
+      "addedBanner": "Banner został dodany",
+      "updatedBanner": "Banner został zaktualizowany",
+      "errorAddedBanner": "Wystąpił błąd podczas dodawania... Spróbuj ponownie",
+      "pendingMessageBanner": "Trwa dodawanie nowego banera",
+      "pendingMessageBannerEdit": "Trwa aktualizacja..."
     }
   }
 }

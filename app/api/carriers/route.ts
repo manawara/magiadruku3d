@@ -1,28 +1,14 @@
 // app/api/carriers/route.ts
-
+import db from "@/lib/db";
+import { NextResponse } from "next/server";
 export async function GET() {
   try {
-    const res = await fetch(
-      `${process.env.FURGONETKA_API_URL}/v2/account/services`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.FURGONETKA_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        cache: "no-store",
-      }
-    );
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    return Response.json(data);
+    const result = await db.carrier.findMany({
+      orderBy: { name: "asc" },
+    });
+    return NextResponse.json(result);
   } catch (error) {
-    console.error("Error fetching carriers:", error);
-    return Response.json(
+    return NextResponse.json(
       { error: "Failed to fetch carriers" },
       { status: 500 }
     );

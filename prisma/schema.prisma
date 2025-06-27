@@ -62,7 +62,7 @@ model Product {
   productName       Json
   size              String
   stock             Int       @default(1)
-  tag               Json    
+  tag               String    
   tex               Int       @default(23)
   weight            Int
   createdAt         DateTime  @default(now())
@@ -82,4 +82,27 @@ model Rating {
   updatedAt DateTime @updatedAt
 
   @@unique([userId, productId]) // Ensure one rating per user per product
+}
+
+model Carrier {
+  id        Int      @id @default(autoincrement())
+  name   String @unique
+  active Boolean @default(false)
+}
+
+model BannerMain {
+  id        Int     @id @default(autoincrement())
+  title     Json
+  subTitle  Json
+  price     Int
+  status    String
+  order     Int
+  linkProduct String
+  linkImage  String?  // Add this line if missing; use ? if optional
+  discount  Int
+}
+
+enum Status {
+  inactive
+  active
 }

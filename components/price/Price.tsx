@@ -9,7 +9,7 @@ const Price = ({ price, className }: PriceProps) => {
   const t = useTranslations("Banner.Slider");
   return (
     <div
-      className={`flex justify-center items-center text-lg rounded-full  bg-blue-400 text-gray-50  size-20 ${className}`}
+      className={`flex justify-center items-center text-sm font-semibold rounded-full  bg-blue-400 text-gray-50  size-14 ${className}`}
     >
       {price + " "} {t("price")}
     </div>

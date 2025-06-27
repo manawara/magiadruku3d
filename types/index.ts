@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { StaticImageData } from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 export type SupportedLocale = "pl" | "en";
 
 export type ChildrenType = {
@@ -27,13 +28,10 @@ export type IntentType = "primary" | "info" | "success" | "warning" | "danger";
 
 export type SliderItemType = {
   id?: number;
-  subtitle?: string;
+  subTitle?: string;
   title: string;
   description?: string;
-  image: {
-    src: string | StaticImageData;
-    alt: string;
-  };
+  linkImage: string | null | StaticImport;
   price: number;
 };
 

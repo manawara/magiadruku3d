@@ -23,7 +23,7 @@ const Slider = ({ slides, options = {} }: SliderProps) => {
   const { dots = false, autoPlay = true, time = 10, arrows = false } = options;
   const x = useMotionValue(0);
   const dragThreshold = 50; // Minimum drag distance to trigger slide change
-
+  console.log(slides);
   const autoPlayInterval = time * 1000; // Autoplay interval in milliseconds
   const nextSlide = useCallback(() => {
     setDirection("right");
@@ -58,26 +58,22 @@ const Slider = ({ slides, options = {} }: SliderProps) => {
   return (
     <motion.div className="min-h-[400px] max-h-[400px] max-sm:max-h-max max-sm:pb-11 bg-gray-50 w-full relative rounded-md overflow-hidden flex items-center flex-nowrap">
       <AnimatePresence mode="wait">
-        {slides && (
-          <motion.div
-            className="flex"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.4}
-            onDragStart={() => setIsDragging(true)}
-            onDragEnd={handleDragEnd}
-            style={{ x }}
-          >
-            {slides.map((slide) => (
-              <SliderItem
-                key={slide.id}
-                {...slide}
-                currentSlide={currentIndex}
-                direction={direction}
-              />
-            ))}
-          </motion.div>
-        )}
+        <motion.div
+          key={slides[currentIndex].id}
+          className="w-full h-full"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.4}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={handleDragEnd}
+          style={{ x }}
+        >
+          <SliderItem
+            {...slides[currentIndex]}
+            currentSlide={currentIndex}
+            direction={direction}
+          />
+        </motion.div>
       </AnimatePresence>
 
       {dots && (

@@ -66,7 +66,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
   // Dodaj stan dla kontrolowania powiadomień
   const [showSuccess, setShowSuccess] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
-  console.log(product);
+
   const [selectedMainCategory, setSelectedMainCategory] = useState<
     string | null
   >(product.categoryName ?? null);
@@ -83,12 +83,12 @@ const FormProductEdit = ({ product }: { product: Product }) => {
     weight,
     stock,
     tag,
-    colors,
     categoryName,
     description,
     price,
     discount,
     tex,
+    colors,
   } = product;
 
   useEffect(() => {
@@ -108,6 +108,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
     setValue,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     defaultValues: {
@@ -162,10 +163,6 @@ const FormProductEdit = ({ product }: { product: Product }) => {
     }
   };
 
-  const handleTagChange = (name: string) => {
-    setValue("tag", name, { shouldValidate: true });
-  };
-
   const handleEditorChange = (e: ContentEditableEvent) => {
     const newValue = e.target.value;
     setEditorContent(newValue);
@@ -173,7 +170,6 @@ const FormProductEdit = ({ product }: { product: Product }) => {
   };
 
   const onSubmit = async (formData: FormData) => {
-    // Reset wszystkich stanów powiadomień
     setHasError(false);
     setShowSuccess(false);
     setIsUpdating(true);
@@ -184,7 +180,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
         ALLOWED_TAGS: ALLOWED_HTML_TAGS,
         ALLOWED_ATTR: ALLOWED_HTML_ATTRS,
       });
-      console.log(formData);
+
       let finalImageUrls: string[] = [];
       const placeholderUrl = placeholderIcon.src;
 
@@ -215,7 +211,6 @@ const FormProductEdit = ({ product }: { product: Product }) => {
           categoryChildName: selectedSubCategory,
           description: sanitizedDescription,
           productName: formData.productName,
-          tag: formData.tag,
         },
         locale
       );
@@ -226,15 +221,15 @@ const FormProductEdit = ({ product }: { product: Product }) => {
           ...formData,
           ...convertedDataLang,
           images: finalImageUrls,
+          // Używamy tag z formData, nie z props
+          // tag jest już w formData
         };
 
         await updatedProduct(finalData as ProductType);
 
-        // Ustaw sukces tylko po pomyślnej aktualizacji
-        setIsUpdating(false); // Zatrzymaj loading
+        setIsUpdating(false);
         setShowSuccess(true);
 
-        // Auto-hide success po 3 sekundach
         setTimeout(() => {
           setShowSuccess(false);
         }, 3000);
@@ -245,10 +240,9 @@ const FormProductEdit = ({ product }: { product: Product }) => {
       }
     } catch (error) {
       console.error("Error updating product:", error);
-      setIsUpdating(false); // Zatrzymaj loading
+      setIsUpdating(false);
       setHasError(true);
 
-      // Auto-hide error po 3 sekundach
       setTimeout(() => {
         setHasError(false);
       }, 3000);
@@ -280,7 +274,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
         <Card>
           <div className="flex flex-col px-4 py-4">
             <Input label={tp("productName")} {...register("productName")} />
-            <div className="flex  gap-4 py-4">
+            <div className="flex gap-4 py-4">
               <Select
                 className="w-1/2"
                 sortOptions={categories}
@@ -288,7 +282,7 @@ const FormProductEdit = ({ product }: { product: Product }) => {
                 value={selectedMainCategory ?? ""}
                 onChange={(value) => {
                   setSelectedMainCategory(value);
-                  setSelectedSubCategory(null); // Resetuj subkategorię
+                  setSelectedSubCategory(null);
                 }}
               />
 
@@ -348,14 +342,18 @@ const FormProductEdit = ({ product }: { product: Product }) => {
             <div className="flex items-center gap-4 px-4 mt-4 ">
               <div className="w-1/3 relative top-0 left-0">
                 <Select
-                  id="product-tag"
-                  sortOptions={TAG_OPTIONS[locale]}
                   label={tp("selectTag")}
-                  defaultValue={
-                    TAG_OPTIONS[locale].find((el) => el.key === tag)?.name
+                  value={watch("tag") ?? ""}
+                  onChange={(name, id, value) =>
+                    setValue("tag", value, { shouldValidate: true })
                   }
-                  onChange={handleTagChange}
+                  sortOptions={TAG_OPTIONS[locale].map(({ id, key, name }) => ({
+                    id,
+                    name,
+                    value: key,
+                  }))}
                 />
+
                 {errors.tag && (
                   <div>
                     <ErrorMessage message={errors.tag.message as string} />
@@ -399,55 +397,54 @@ const FormProductEdit = ({ product }: { product: Product }) => {
                 <ErrorMessage message={errors.description.message as string} />
               )}
             </div>
+
+            {/* Price and Discount */}
+            <div className="flex gap-4 px-4 py-2">
+              <div className="w-1/3">
+                <Input
+                  label={tp("price")}
+                  {...register("price", { valueAsNumber: true })}
+                  type="number"
+                  min={0}
+                />
+                {errors.price && (
+                  <ErrorMessage message={errors.price.message as string} />
+                )}
+              </div>
+              <div className="w-1/3">
+                <Input
+                  label={tp("discount")}
+                  {...register("discount", { valueAsNumber: true })}
+                  type="number"
+                  min={0}
+                />
+                {errors.discount && (
+                  <ErrorMessage message={errors.discount.message as string} />
+                )}
+              </div>
+              <div className="w-1/3">
+                <Input
+                  label={tp("tex")}
+                  {...register("tex", { valueAsNumber: true })}
+                  type="number"
+                  min={0}
+                />
+                {errors.tex && (
+                  <ErrorMessage message={errors.tex.message as string} />
+                )}
+              </div>
+            </div>
+
+            <Button
+              colorFill="primary"
+              variant="basic"
+              type="submit"
+              disabled={isSubmitting || isUpdating}
+            >
+              {isSubmitting || isUpdating ? tg("updating") : tg("update")}
+            </Button>
           </div>
         </Card>
-        {/* Pricing */}
-        <Card>
-          <FormHeading title={tp("pricingDetails")} />
-          <div className="flex gap-6 p-4">
-            <div className="w-1/3">
-              <Input
-                type="number"
-                placeholder="0 zł"
-                label={tp("price")}
-                {...register("price", { valueAsNumber: true })}
-              />
-              {errors.price && (
-                <ErrorMessage message={errors.price.message as string} />
-              )}
-            </div>
-            <div className="w-1/3">
-              <Input
-                type="number"
-                placeholder="0%"
-                label={tp("discount")}
-                {...register("discount", { valueAsNumber: true })}
-              />
-              {errors.discount && (
-                <ErrorMessage message={errors.discount.message as string} />
-              )}
-            </div>
-            <div className="w-1/3">
-              <Input
-                type="number"
-                placeholder="0%"
-                label={tp("tex")}
-                {...register("tex", { valueAsNumber: true })}
-              />
-              {errors.tex && (
-                <ErrorMessage message={errors.tex.message as string} />
-              )}
-            </div>
-          </div>
-        </Card>
-        <Button
-          variant="basic"
-          colorFill="primary"
-          type="submit"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? tg("updating") : tg("update")}
-        </Button>
       </form>
 
       <Notyfi

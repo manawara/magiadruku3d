@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: ["res.cloudinary.com"], // Dodaj domenę Cloudinary
+    domains: ["res.cloudinary.com", "minotaur.globkurier.pl"], // Dodaj domenę Cloudinary
   },
 
   async headers() {

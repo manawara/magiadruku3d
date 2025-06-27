@@ -139,3 +139,38 @@ export const schemaProductTypeEdit = z.object({
     .optional(),
   tex: z.number().min(0, "Tex cannot be negative"),
 });
+
+export const formMainSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  subTitle: z.string().optional(),
+  price: z.coerce.number().optional(), // Możesz zmienić na z.coerce.number() jeśli chcesz liczby
+  status: z.string().min(1, "Status is required"),
+  order: z.coerce
+    .number()
+    .min(1, "Order must be at least 1")
+    .max(3, "Order must be at most 3"),
+  linkProduct: z
+    .string()
+    .min(1, "Product link is required")
+    .refine(
+      (val) => {
+        try {
+          const url = new URL(val);
+          return url.protocol === "http:" || url.protocol === "https:";
+        } catch {
+          return false;
+        }
+      },
+      {
+        message: "Invalid product link",
+      }
+    ),
+
+  linkImage: z
+    .string()
+    .min(1, "Image link is required")
+    .refine((val) => !val || /^https?:\/\/.+\..+/.test(val), {
+      message: "Invalid image link",
+    }),
+  discount: z.coerce.number().min(0, "Discount is required"),
+});
