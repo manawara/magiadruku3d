@@ -7,7 +7,7 @@ import FileUpload from "@/backend/components/file-upload/FileUpload";
 import { useForm } from "react-hook-form";
 import { uploadImage } from "@/lib/cloudinary";
 import Button from "@/backend/components/button/Button";
-import placeholderIcon from "@/public/placeholder.jpg";
+import placeholderIcon from "@/public/placeholder.png";
 import Input from "@/backend/components/input/Input";
 import Select from "@/backend/components/select/Select";
 import SpinWithText from "@/backend/components/loading/components/spin-with-text/SpinWithText";
@@ -136,10 +136,12 @@ const FormProductEdit = ({ product }: { product: Product }) => {
       id: el.id,
       name: el.mainCategory ?? "",
       children:
-        el.children?.map((child) => ({
-          id: child.id,
-          name: child.name,
-        })) || [],
+        el.children
+          ?.map((child) => ({
+            id: child.id,
+            name: child.name ?? "", // Fixed: ensure name is never undefined
+          }))
+          .filter((child) => child.name !== "") ?? [], // Filter out empty names
     })) || [];
 
   const handleFileChange = (uploadedFiles: (string | File | null)[]): void => {

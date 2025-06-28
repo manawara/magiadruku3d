@@ -12,7 +12,7 @@ import ErrorMessage from "@/backend/components/error-message/ErrorMessage";
 import { convertTargetLang } from "@/lib/helper";
 import { createCategory } from "@/app/action/category";
 import { uploadImage } from "@/lib/cloudinary";
-import placeholderImage from "@/public/placeholder.jpg";
+import placeholderImage from "@/public/placeholder.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { categoryType } from "@/types/zod";
 import { z } from "zod";

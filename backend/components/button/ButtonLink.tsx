@@ -6,7 +6,7 @@ import { ChildrenType } from "@/types";
 
 type ButtonLinkType = {
   variant: "basic";
-  colorFill: "primary";
+  colorFill: "primary" | "warn";
   size?: "full";
   icon?: boolean;
   iconLeft?: boolean;

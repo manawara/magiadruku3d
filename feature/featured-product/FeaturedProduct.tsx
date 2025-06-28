@@ -15,6 +15,7 @@ const FeaturedProduct = async () => {
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-4 ">
         <ProductSmallItemCard
+          id={1}
           title="ssss"
           price={22}
           rating={2}
@@ -25,6 +26,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={1}
           title="ssss"
           price={22}
           image={{
@@ -33,6 +35,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={3}
           title="ssss"
           price={22}
           image={{
@@ -41,6 +44,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={5}
           title="ssss"
           price={22}
           image={{
@@ -49,6 +53,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={6}
           title="ssss"
           price={22}
           image={{
@@ -57,6 +62,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={7}
           title="ssss"
           price={22}
           image={{
@@ -65,6 +71,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={8}
           title="ssss"
           price={22}
           image={{
@@ -73,6 +80,7 @@ const FeaturedProduct = async () => {
           }}
         />
         <ProductSmallItemCard
+          id={9}
           title="ssss"
           price={22}
           image={{

@@ -109,10 +109,12 @@ const FormProductAdd = () => {
       id: el.id,
       name: el.mainCategory ?? "",
       children:
-        el.children?.map((child) => ({
-          id: child.id,
-          name: child.name,
-        })) || [],
+        el.children
+          ?.filter((child) => child.name !== undefined)
+          .map((child) => ({
+            id: child.id,
+            name: child.name as string,
+          })) || [],
     })) || [];
 
   const handleFileChange = (uploadedFiles: (string | File | null)[]) => {

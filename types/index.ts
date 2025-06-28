@@ -10,13 +10,14 @@ export type ChildrenType = {
 // Interface for the nested child category
 export interface CategoryChild {
   id?: number;
-  name: string;
+  name: string[];
   children?: CategoryChild[]; // Optional nested children
 }
 
 // Interface for the main category
 export interface MainCategory {
   id: number;
+  name: string | undefined;
   [key: string]: string | number | CategoryChild[] | undefined | null;
   children: CategoryChild[];
 }
@@ -32,6 +33,7 @@ export type SliderItemType = {
   title: string;
   description?: string;
   linkImage: string | null | StaticImport;
+  linkProduct: string;
   price: number;
 };
 
@@ -56,11 +58,12 @@ export type CreateCategoryData = {
 };
 interface SubCategory {
   id: number;
-  name: string;
+  name?: string;
 }
 export type CategoryType = {
   id: number;
   images?: File[];
+
   mainCategory: string | null; // Ensure this matches the transformed data
   metaTitle?: string | null;
   metaTag?: string | null;

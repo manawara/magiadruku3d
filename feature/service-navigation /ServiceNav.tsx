@@ -16,7 +16,7 @@ const ServiceNav = async () => {
         <Select
           intent="primary"
           label={t("select-label")}
-          categories={category}
+          categories={category as any}
         />
         <IconWithText
           sizeIcon={17}

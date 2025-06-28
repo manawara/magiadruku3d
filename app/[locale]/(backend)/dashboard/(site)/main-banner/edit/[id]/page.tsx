@@ -6,32 +6,33 @@ import FormMainBannerEdit, {
 import { getLocale, getTranslations } from "next-intl/server";
 import React from "react";
 
-type MainBannerEditPage = {
-  params: {
-    id: number;
-  };
+type MainBannerEditPageProps = {
+  params: Promise<{
+    id: string;
+  }>;
 };
 
-const MainBannerEditPage = async ({ params }: MainBannerEditPage) => {
-  const awaitedParams = await params;
-  const id = Number(awaitedParams.id);
+const MainBannerEditPage = async ({ params }: MainBannerEditPageProps) => {
+  const { id: idParam } = await params;
+  const id = Number(idParam);
   const locale = await getLocale();
-  const banner = (await getBannerByID(id)) as FormMainBannerFieldsType;
   const tg = await getTranslations("Backend.general");
+
+  const banner = (await getBannerByID(id)) as FormMainBannerFieldsType | null;
+
+  if (!banner) {
+    return <div>{tg("notFound")}</div>;
+  }
 
   const title =
     typeof banner.title === "object" && banner.title !== null
-      ? (banner.title as Record<string, string>)[locale]
+      ? (banner.title as Record<string, string>)[locale] ?? ""
       : "";
 
   const subTitle =
     typeof banner.subTitle === "object" && banner.subTitle !== null
-      ? (banner.subTitle as Record<string, string>)[locale]
+      ? (banner.subTitle as Record<string, string>)[locale] ?? ""
       : "";
-
-  if (!banner) {
-    return <div>{tg("notFound")}</div>; // lub inny fallback
-  }
 
   return (
     <div>

@@ -3,9 +3,11 @@ import iconCard from "@/public/placeholder_productItemCard.png";
 import ProductSmallItemCard from "@/components/product-item-card/ProductSmallItemCard";
 
 const ProductListing = ({ products = [] }) => {
+  console.log(products);
   return (
     <div className="grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
       <ProductSmallItemCard
+        id={1}
         title="ssss"
         price={22}
         rating={2}
@@ -16,6 +18,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={2}
         title="ssss"
         price={22}
         image={{
@@ -24,6 +27,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={3}
         title="ssss"
         price={22}
         image={{
@@ -32,6 +36,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={4}
         title="ssss"
         price={22}
         image={{
@@ -40,6 +45,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={5}
         title="ssss"
         price={22}
         image={{
@@ -48,6 +54,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={6}
         title="ssss"
         price={22}
         image={{
@@ -56,6 +63,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={7}
         title="ssss"
         price={22}
         image={{
@@ -64,6 +72,7 @@ const ProductListing = ({ products = [] }) => {
         }}
       />
       <ProductSmallItemCard
+        id={8}
         title="ssss"
         price={22}
         image={{

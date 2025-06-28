@@ -8,36 +8,42 @@ import { slugify } from "@/lib/helper";
 
 const Breadcrumb = () => {
   const t = useTranslations();
-  const path = usePathname();
-  const links = [
-    ...new Set(path.split("/").map((el) => (el === "" ? t("Home") : el))),
+  const pathname = usePathname();
+
+  const segments = pathname.split("/").filter(Boolean); // usuń puste segmenty
+
+  const crumbs = [
+    { label: t("Home"), href: "/" },
+    ...segments.map((seg, i) => {
+      const href =
+        "/" +
+        segments
+          .slice(0, i + 1)
+          .map(slugify)
+          .join("/");
+      return { label: seg, href };
+    }),
   ];
 
-  return (
-    links.length > 1 && (
-      <nav aria-label="Breadcrumb" className="bg-gray-50 p-5 flex">
-        <ol className="container mx-auto flex items-center">
-          <HomeIcon className="text-gray-600 size-5 mr-2" />
+  if (crumbs.length < 2) return null;
 
-          {links.map((item, index) => (
-            <li key={item + index} className="flex items-center gap-0">
-              <span className="text-gray-600 flex items-center capitalize">
-                {index === 0 ? (
-                  <Link href="/">{item}</Link>
-                ) : (
-                  <Link href={slugify(item)} className="text-blue-500">
-                    {item}
-                  </Link>
-                )}
-                <span className={`${index === links.length - 1 && "hidden"}`}>
-                  <ChevronRight size={20} />
-                </span>
-              </span>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    )
+  return (
+    <nav aria-label="Breadcrumb" className="bg-gray-50 p-5 flex">
+      <ol className="container mx-auto flex items-center text-sm">
+        {crumbs.map((crumb, index) => (
+          <li key={index} className="flex items-center gap-2 capitalize">
+            {index === 0 ? (
+              <HomeIcon className="text-gray-600 size-5 mr-1" />
+            ) : (
+              <ChevronRight size={20} className="text-gray-400" />
+            )}
+            <Link href={crumb.href} className="text-blue-500 hover:underline">
+              {crumb.label}
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 };
 

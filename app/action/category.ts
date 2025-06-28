@@ -2,7 +2,7 @@
 
 import db from "@/lib/db";
 import { CreateCategoryData, CategoryType } from "@/types";
-import placeholderImage from "@/public/placeholder.jpg";
+import placeholderImage from "@/public/placeholder.png";
 // Function to delete a Category by ID
 export const deletedCategory = async (id: number) => {
   try {

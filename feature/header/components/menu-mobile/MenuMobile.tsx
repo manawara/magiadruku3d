@@ -37,7 +37,7 @@ const Menu = ({ onClose }: MenuProps) => {
       <motion.nav className="py-4 h-full">
         <motion.ul className="font-semibold">
           <MenuItem variants={childVariants} className="py-4">
-            <MultiMenu label={t("shop")} categories={data} />
+            <MultiMenu label={t("shop")} categories={data as any} />
           </MenuItem>
           <Divider position="horizontal" color="bg-gray-900" />
 

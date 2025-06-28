@@ -62,7 +62,7 @@ const FormCategoryEdit = () => {
   const t = useTranslations("Backend.formCategoryEdit");
 
   // Placeholder image URL
-  const placeholderUrl = "/placeholder.jpg"; // Adjust if necessary to the correct path
+  const placeholderUrl = "/placeholder.png"; // Adjust if necessary to the correct path
 
   // Fetch single category by ID
   const { data, isLoading, refetch } = useQuery({

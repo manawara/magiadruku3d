@@ -1,6 +1,7 @@
 // app/api/carriers/route.ts
 import db from "@/lib/db";
 import { NextResponse } from "next/server";
+
 export async function GET() {
   try {
     const result = await db.carrier.findMany({
@@ -8,8 +9,9 @@ export async function GET() {
     });
     return NextResponse.json(result);
   } catch (error) {
+    console.error("Failed to fetch carriers:", error);
     return NextResponse.json(
-      { error: "Failed to fetch carriers" || error },
+      { error: "Failed to fetch carriers" },
       { status: 500 }
     );
   }

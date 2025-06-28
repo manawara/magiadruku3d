@@ -1,13 +1,13 @@
 "use client";
 import useToggle from "@/hooks/useToogle";
-import { slugify } from "@/lib/helper";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { Categories } from "@/types";
-import { containerVariants, childVariants, itemVariants } from "./variants";
+import { containerVariants, itemVariants } from "./variants";
+import slugify from "slugify";
 type MultiMenu = {
   label: string;
   categories?: Categories | undefined;
@@ -49,23 +49,41 @@ const MultiMenu = ({ label, categories }: MultiMenu) => {
                   className="py-2"
                 >
                   <Link
-                    href={slugify(category.mainCategory as string)}
+                    href={
+                      "sklep/" +
+                      slugify(category.mainCategory as string) +
+                      "-" +
+                      category.id
+                    }
                     className="font-medium hover:text-gray-600"
                   >
                     {category.mainCategory as string}
                   </Link>
                   {Array.isArray(category.children) &&
-                    category.children.length > 0 && (
+                    category.children.length > 0 &&
+                    !category.children[0].name.includes("") && (
                       <motion.ul className="ml-4 mt-2 space-y-1">
-                        {category.children.map((child) => (
-                          <motion.li
-                            key={child.id + child.name}
-                            variants={childVariants}
-                            className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer py-1"
-                          >
-                            {child.name}
-                          </motion.li>
-                        ))}
+                        {category.children.map(
+                          (child) =>
+                            child &&
+                            child.name.map((childName: string) => (
+                              <li
+                                key={childName}
+                                className="px-6 py-3 text-xs hover:bg-gray-50 lg:text-sm cursor-pointer block w-full"
+                              >
+                                <Link
+                                  href={`/sklep/${slugify(
+                                    category.mainCategory as string,
+                                    { lower: true }
+                                  )}-${category.id}/${slugify(childName, {
+                                    lower: true,
+                                  })}`}
+                                >
+                                  {childName}
+                                </Link>
+                              </li>
+                            ))
+                        )}
                       </motion.ul>
                     )}
                 </motion.li>
