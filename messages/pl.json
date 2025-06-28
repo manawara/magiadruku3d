@@ -67,6 +67,10 @@
     "seeAll": "Zobacz wszystkie"
   },
 
+  "ShopCategory": {
+    "title": "Zakupy według kategorii"
+  },
+
   "Backend": {
     "category": "Kategoria",
     "action": "Akcja",

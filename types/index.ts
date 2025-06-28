@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image"; // ✅ Import typu StaticImageData
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 export type SupportedLocale = "pl" | "en";
 
@@ -62,7 +62,7 @@ interface SubCategory {
 }
 export type CategoryType = {
   id: number;
-  images?: File[];
+  images?: File[] | string | StaticImageData;
 
   mainCategory: string | null; // Ensure this matches the transformed data
   metaTitle?: string | null;

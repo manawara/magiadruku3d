@@ -34,27 +34,30 @@ export const getCategory = async (locale: string): Promise<CategoryType[]> => {
     },
   });
 
-  const mappedCategory = category.map(({ id, mainCategory, children }) => {
-    const parsedMainCategory =
-      typeof mainCategory === "string"
-        ? JSON.parse(mainCategory)
-        : mainCategory;
+  const mappedCategory = category.map(
+    ({ id, mainCategory, imageUrlMain, children }) => {
+      const parsedMainCategory =
+        typeof mainCategory === "string"
+          ? JSON.parse(mainCategory)
+          : mainCategory;
 
-    const mappedChildren = children.map((child) => {
-      const parsedName =
-        typeof child.name === "string" ? JSON.parse(child.name) : child.name;
+      const mappedChildren = children.map((child) => {
+        const parsedName =
+          typeof child.name === "string" ? JSON.parse(child.name) : child.name;
+        return {
+          id: child.id,
+          name: parsedName[locale],
+        };
+      });
+
       return {
-        id: child.id, // Ensure each child has an 'id' property
-        name: parsedName[locale],
+        id,
+        mainCategory: parsedMainCategory[locale],
+        images: imageUrlMain,
+        children: mappedChildren,
       };
-    });
-
-    return {
-      id,
-      mainCategory: parsedMainCategory[locale],
-      children: mappedChildren,
-    };
-  });
+    }
+  );
 
   return mappedCategory;
 };
