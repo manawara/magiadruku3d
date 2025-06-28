@@ -34,7 +34,6 @@ const SelectItem = ({
   onCategoryHover,
   intent,
 }: SelectItemProps) => {
-  console.log(category.children);
   return (
     <motion.li
       className={`px-2 cursor-pointer relative flex justify-between items-center text-xs lg:text-sm ${selectItem(

@@ -125,7 +125,6 @@ interface UpdateCategoryData {
 }
 export async function updateCategory(data: UpdateCategoryData) {
   try {
-    console.log(data);
     const updatedCategory = await db.category.update({
       where: { id: data.id },
       data: {

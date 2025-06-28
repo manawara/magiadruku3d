@@ -82,7 +82,6 @@ export const getProductByID = async (id: number) => {
 };
 
 export const updatedProduct = async (data: ProductType) => {
-  console.log(data);
   const {
     id,
     productName,

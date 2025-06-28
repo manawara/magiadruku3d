@@ -37,7 +37,6 @@ export const parseField = (item: string, lang: string) => {
 };
 
 export const parseImage = (image: string | string[]) => {
-  console.log(typeof image);
   if (typeof image === "object" && image !== null) {
     return JSON.parse(image[0]);
   }
@@ -204,6 +203,5 @@ export const localizedData = (
 ): Record<string, any> =>
   Object.entries(product).reduce((acc, [key, value]) => {
     acc[key] = getLocalizedValue(value, locale);
-    console.log(acc, "sssssss");
     return acc;
   }, {} as Record<string, any>);

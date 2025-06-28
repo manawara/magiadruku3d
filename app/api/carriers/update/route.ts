@@ -9,8 +9,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid data" }, { status: 400 });
     }
 
-    console.log("carriers from client:", carriers);
-
     for (const carrier of carriers) {
       if (!carrier?.name || typeof carrier.active !== "boolean") {
         console.warn("Pominięto nieprawidłowego kuriera:", carrier);

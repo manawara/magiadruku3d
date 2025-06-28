@@ -23,7 +23,6 @@ const Slider = ({ slides, options = {} }: SliderProps) => {
   const { dots = false, autoPlay = true, time = 10, arrows = false } = options;
   const x = useMotionValue(0);
   const dragThreshold = 50; // Minimum drag distance to trigger slide change
-  console.log(slides);
   const autoPlayInterval = time * 1000; // Autoplay interval in milliseconds
   const nextSlide = useCallback(() => {
     setDirection("right");
