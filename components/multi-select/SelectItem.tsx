@@ -34,6 +34,7 @@ const SelectItem = ({
   onCategoryHover,
   intent,
 }: SelectItemProps) => {
+  console.log(category);
   return (
     <motion.li
       className={`px-2 cursor-pointer relative flex justify-between items-center text-xs lg:text-sm ${selectItem(
@@ -56,7 +57,7 @@ const SelectItem = ({
         {category.mainCategory as string}
       </Link>
 
-      {category.children.length > 0 && category.children[0].name[0] !== "" && (
+      {category.children.length > 0 && category.children[0].name.length > 0 && (
         <>
           <ChevronRight size={18} />
           {(openCategory === category.mainCategory ||
