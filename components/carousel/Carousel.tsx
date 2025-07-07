@@ -9,10 +9,11 @@ import { CategoryType } from "@/types";
 import placeholder from "@/public/placeholder.png";
 
 type CarouselType = {
-  items: CategoryType[]; //
+  items: CategoryType[];
+  category?: string;
 };
 
-const Carousel = ({ items }: CarouselType) => {
+const Carousel = ({ items, category }: CarouselType) => {
   const sliderRef = useRef<Slider | null>(null);
 
   if (!items || items.length === 0) {
@@ -87,6 +88,7 @@ const Carousel = ({ items }: CarouselType) => {
             key={item.id}
             title={item.mainCategory || "Bez nazwy"} // ✅ Obsługa null
             images={(item as any).images || placeholder} // ✅ Type assertion jako fallback
+            category={category}
           />
         ))}
       </Slider>

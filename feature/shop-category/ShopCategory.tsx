@@ -12,7 +12,7 @@ const ShopCategory = async () => {
   return (
     <section className="container mx-auto my-12">
       <h2 className="text-3xl font-semibold text-center mb-6">{t("title")}</h2>
-      <Carousel items={categories} />
+      <Carousel items={categories} category="kategoria" />
     </section>
   );
 };

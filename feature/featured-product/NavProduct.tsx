@@ -1,37 +1,60 @@
+"use client";
+
 import ButtonHighlight from "@/components/button/ButtonHighlight";
-import ButtonLink from "@/components/button/ButtonLink";
+import { Prisma } from "@prisma/client";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 
-const NavProduct = () => {
+type CategoryType = {
+  id: number;
+  mainCategory: any;
+  imageUrlMain: string;
+  metaDescription: Prisma.JsonValue;
+  metaTag: Prisma.JsonValue;
+  metaTitle: Prisma.JsonValue;
+};
+const NavProduct = ({
+  categories,
+  onAction,
+  isActive,
+}: {
+  categories: CategoryType[];
+  onAction: (id: number, name: string) => void;
+  isActive: number;
+}) => {
+  const t = useTranslations("NavProduct");
+  const locale = useLocale();
+
+  const handleClickCategory = (id: number, name: string) => {
+    onAction(id, name);
+  };
   return (
     <nav>
       <ul className="flex items-center gap-2 max-sm:gap-1 text-sm max-sm:flex-col">
-        <li>
-          <ButtonHighlight color="primary" isActive>
-            All product
+        <li onClick={() => handleClickCategory(0, "all")}>
+          <ButtonHighlight color="primary" isActive={isActive === 0}>
+            {t("allProduct")}
           </ButtonHighlight>
         </li>
-        <li>
-          <ButtonHighlight color="primary">SmartPhone</ButtonHighlight>
-        </li>
-        <li>
-          <ButtonHighlight color="primary">Laptop</ButtonHighlight>
-        </li>
-        <li>
-          <ButtonHighlight color="primary">Headphone</ButtonHighlight>
-        </li>
 
-        <li>
-          <ButtonHighlight color="primary">TV</ButtonHighlight>
-        </li>
-        <li>
-          <ButtonLink href="ssss" color="primary" size={12}>
-            Browse All Product
-          </ButtonLink>
-        </li>
+        {categories.map((category) => (
+          <li
+            key={category.id}
+            onClick={() =>
+              handleClickCategory(category.id, category.mainCategory?.[locale])
+            }
+          >
+            <ButtonHighlight
+              color="primary"
+              isActive={isActive === category.id}
+            >
+              {(category.mainCategory?.[locale] as string) ?? ""}
+            </ButtonHighlight>
+          </li>
+        ))}
       </ul>
     </nav>
   );
 };
 
-export default NavProduct;
+export default React.memo(NavProduct);

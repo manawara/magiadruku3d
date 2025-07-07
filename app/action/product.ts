@@ -147,3 +147,27 @@ export const getProductTag = async (
     take: actualLimit,
   });
 };
+
+export const getProductByCategory = async (
+  locale: string,
+  category: string
+) => {
+  const result = await db.product.findMany({
+    where: {
+      categoryName:
+        category === "all"
+          ? undefined
+          : {
+              path: [locale],
+              equals: category,
+            },
+      tag: "popular",
+    },
+  });
+  return result.map((product) => {
+    return {
+      ...product,
+      price: parseFloat(product.price.toFixed(2)), // Decimal -> number
+    };
+  });
+};

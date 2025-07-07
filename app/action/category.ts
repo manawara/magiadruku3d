@@ -105,13 +105,13 @@ export const getCategoryPagination = async (sortBy: "asc" | "desc" = "asc") => {
 };
 
 export const getCategoryByID = async (id: number) => {
+  if (id === 0) {
+    const data = await db.category.findMany({});
+    return Array.isArray(data) ? data : [data];
+  }
+
   return await db.category.findFirst({
-    include: {
-      children: true,
-    },
-    where: {
-      id: id,
-    },
+    where: { id },
   });
 };
 

@@ -29,7 +29,7 @@ const items2 = [
     value: { min: 0, max: 20 },
   },
 ];
-const ShopPage = async () => {
+const CategoryPage = async () => {
   const t = await getTranslations("Header");
   return (
     <div className="grid xl:grid-cols-[25%,1fr] container mx-auto py-10 ">
@@ -71,4 +71,4 @@ const ShopPage = async () => {
   );
 };
 
-export default ShopPage;
+export default CategoryPage;

@@ -70,7 +70,9 @@
   "ShopCategory": {
     "title": "Zakupy według kategorii"
   },
-
+  "NavProduct": {
+    "allProduct": "Wszystkie produkty"
+  },
   "Backend": {
     "category": "Kategoria",
     "action": "Akcja",
